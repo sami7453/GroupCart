@@ -1,0 +1,47 @@
+<resources>
+    <!-- Nom de l'application -->
+    <string name="app_name">ProjetAndroid</string>
+
+    <!-- Textes communs pour les boutons -->
+    <string name="button_ok">OK</string>
+    <string name="button_cancel">Annuler</string>
+    <string name="button_submit">Valider</string>
+    <string name="button_login">Se connecter</string>
+    <string name="button_register">S\'inscrire</string>
+    <string name="button_retry">Réessayer</string>
+    <string name="button_save">Enregistrer</string>
+    <string name="button_delete">Supprimer</string>
+    <string name="button_edit">Modifier</string>
+
+    <!-- Messages communs -->
+    <string name="message_loading">Chargement en cours...</string>
+    <string name="message_error">Une erreur s\'est produite</string>
+    <string name="message_success">Succès !</string>
+    <string name="message_no_internet">Pas de connexion Internet</string>
+    <string name="message_try_again">Veuillez réessayer</string>
+
+    <!-- Textes pour les champs de formulaire -->
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Mot de passe</string>
+    <string name="hint_confirm_password">Confirmer le mot de passe</string>
+    <string name="hint_name">Nom</string>
+    <string name="hint_phone">Téléphone</string>
+
+    <!-- Titres communs -->
+    <string name="title_login">Connexion</string>
+    <string name="title_register">Inscription</string>
+    <string name="title_profile">Profil</string>
+    <string name="title_settings">Paramètres</string>
+    <string name="title_home">Accueil</string>
+
+    <!-- Autres textes utiles -->
+    <string name="text_or">OU</string>
+    <string name="text_remember_me">Se souvenir de moi</string>
+    <string name="text_forgot_password">Mot de passe oublié ?</string>
+    <string name="text_terms_and_conditions">Conditions d\'utilisation</string>
+    <string name="text_privacy_policy">Politique de confidentialité</string>
+    <string name="create_account_prompt">Pas encore de compte ? Créer un compte</string>
+    <string name="forgot_password">Mot de passe oublié ?</string>
+    <string name="catchPhrase">Une seule liste,\nmille façons de ne rien oublier.</string>
+    <string name="commencer">Commencer</string>
+</resources>
