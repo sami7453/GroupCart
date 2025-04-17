@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F0EB"
+    android:background="@color/LimeWhite"
     tools:context=".MainActivity">
 
     <ImageView
@@ -29,7 +29,7 @@
         android:gravity="center"
         android:text="@string/catchPhrase"
         android:textAlignment="center"
-        android:textColor="#1F5C63"
+        android:textColor="@color/RegalBlue"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/startButton"
@@ -43,9 +43,9 @@
         android:layout_width="218dp"
         android:layout_height="52dp"
         android:layout_marginBottom="100dp"
-        android:backgroundTint="#2B6374"
+        android:backgroundTint="@color/Blueprint"
         android:text="@string/commencer"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/Fluffyball"
         app:cornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

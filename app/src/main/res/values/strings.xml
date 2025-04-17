@@ -53,4 +53,17 @@
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="enter_your_email">Enter your email</string>
+    <string name="logout">LogOut</string>
+    <string name="back">Back</string>
+    <string name="add_group">Add a group</string>
+    <string name="group_name">Group Name</string>
+    <string name="nom_du_groupe">Nom du groupe</string>
+    <string name="username_du_membre">Username du membre</string>
+    <string name="add">Add</string>
+    <string name="save">Save</string>
+    <string name="remove_member">Remove Member</string>
+    <string name="add_list">add list</string>
+    <string name="nom_de_la_liste">Nom de la liste</string>
+    <string name="add_item">add item</string>
+    <string name="article">Article</string>
 </resources>

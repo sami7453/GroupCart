@@ -1,6 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/group_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LimeWhite"
+    tools:context=".GroupActivity">
+
+    <!-- Top App Bar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="@color/Blueprint"
+        app:navigationIcon="@android:drawable/ic_menu_revert"
+        android:contentDescription="@string/back"
+        app:title="Créer un groupe"
+        app:titleTextColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Nom du groupe -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilGroupName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/nom_du_groupe"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/topAppBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etGroupName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Saisie username + bouton Add -->
+    <EditText
+        android:id="@+id/etMemberUsername"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="@string/username_du_membre"
+        android:padding="12dp"
+        android:background="@color/Fluffyball"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tilGroupName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddMember" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddMember"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="@string/add"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@color/Blueprint"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tilGroupName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/etMemberUsername" />
+
+    <!-- RecyclerView des membres ajoutés -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMembers"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        app:layout_constraintTop_toBottomOf="@id/etMemberUsername"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_member" />
+
+    <!-- Bouton Save -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSaveGroup"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:text="@string/save"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@color/Blueprint"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
