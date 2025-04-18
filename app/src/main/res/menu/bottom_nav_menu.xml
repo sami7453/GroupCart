@@ -17,5 +17,9 @@
         android:id="@+id/navigation_groupes"
         android:icon="@android:drawable/ic_menu_my_calendar"
         android:title="Groupes" />
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:title="Home" />
 
 </menu>
