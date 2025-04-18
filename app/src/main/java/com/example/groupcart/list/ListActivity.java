@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.groupcart.Prefs;
 import com.example.groupcart.R;
 import com.example.groupcart.group.Group;
+import com.example.groupcart.item.ItemList;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class ListActivity extends AppCompatActivity {
                 break;
             }
         }
-        List<ShoppingList> lists = myGroup != null
+        List<ItemList> lists = myGroup != null
                 ? myGroup.getLists()
                 : new ArrayList<>();
 
@@ -71,7 +72,7 @@ public class ListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         // Met à jour le RecyclerView avec les éventuelles nouvelles listes
-        List<ShoppingList> updated = Prefs.with(this)
+        List<ItemList> updated = Prefs.with(this)
                 .loadGroupsForUser(Prefs.with(this).getCurrentUser())
                 .stream()
                 .filter(g -> g.getName().equals(groupName))

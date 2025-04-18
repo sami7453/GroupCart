@@ -4,6 +4,11 @@
     tools:ignore="ExtraText">
 
     <item
+        android:id="@+id/navigation_home"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:title="@string/home" />
+
+    <item
         android:id="@+id/navigation_listes"
         android:icon="@android:drawable/ic_menu_sort_by_size"
         android:title="@string/listes" />
@@ -17,10 +22,5 @@
         android:id="@+id/navigation_groupes"
         android:icon="@android:drawable/ic_menu_my_calendar"
         android:title="@string/groupes" />
-
-    <item
-        android:id="@+id/navigation_home"
-        android:icon="@android:drawable/ic_menu_my_calendar"
-        android:title="@string/home" />
 
 </menu>

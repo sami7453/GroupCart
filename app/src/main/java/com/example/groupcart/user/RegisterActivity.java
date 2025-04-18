@@ -55,6 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         Toast.makeText(this, "Inscription réussie !", Toast.LENGTH_SHORT).show();
+
         finish();
     }
 }

@@ -15,6 +15,7 @@ import com.example.groupcart.item.ItemsAdapter;
 import com.example.groupcart.Prefs;
 import com.example.groupcart.R;
 import com.example.groupcart.group.Group;
+import com.example.groupcart.item.ItemList;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -140,7 +141,7 @@ public class AddListActivity extends AppCompatActivity {
         for (Group g : groups) {
             if (g.getName().equals(groupName)) {
                 g.getLists().add(
-                        new ShoppingList(name, new ArrayList<>(items))
+                        new ItemList(name, new ArrayList<>(items))
                 );
                 break;
             }

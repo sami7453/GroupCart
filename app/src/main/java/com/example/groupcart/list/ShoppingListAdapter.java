@@ -9,18 +9,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.groupcart.R;
+import com.example.groupcart.item.ItemList;
 
 import java.util.List;
 
 public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapter.VH> {
 
-    private List<ShoppingList> shoppingLists;
+    private List<ItemList> shoppingLists;
 
-    public ShoppingListAdapter(List<ShoppingList> shoppingLists) {
+    public ShoppingListAdapter(List<ItemList> shoppingLists) {
         this.shoppingLists = shoppingLists;
     }
 
-    public void update(List<ShoppingList> newLists) {
+    public void update(List<ItemList> newLists) {
         this.shoppingLists = newLists;
         notifyDataSetChanged();
     }
@@ -35,7 +36,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
-        ShoppingList list = shoppingLists.get(position);
+        ItemList list = shoppingLists.get(position);
         holder.tvListName.setText(list.getName());
     }
 

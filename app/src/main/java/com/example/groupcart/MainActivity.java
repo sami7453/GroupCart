@@ -9,12 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.groupcart.user.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnLogin = findViewById(R.id.startButton);
-        btnLogin.setOnClickListener(v -> {
+        Button loginButton = findViewById(R.id.startButton);
+        loginButton.setOnClickListener(v -> {
             startActivity(new Intent(this, LoginActivity.class));
         });
     }

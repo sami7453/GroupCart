@@ -13,7 +13,7 @@ import com.example.groupcart.R;
 import java.util.List;
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.VH> {
-    private List<String> items;
+    private List<ItemList> items;
 
     public ItemsAdapter(List<String> items) {
         this.items = items;

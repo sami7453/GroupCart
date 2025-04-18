@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     private void attemptLogin() {
         String user = usernameEditText.getText().toString().trim();
         String pass = passwordEditText.getText().toString().trim();
+
         if (Prefs.with(this).checkCredentials(user, pass)) {
             startActivity(new Intent(this, HomeActivity.class));
             finish();
