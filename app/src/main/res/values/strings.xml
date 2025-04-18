@@ -66,4 +66,8 @@
     <string name="nom_de_la_liste">Nom de la liste</string>
     <string name="add_item">add item</string>
     <string name="article">Article</string>
+    <string name="listes">Listes</string>
+    <string name="scan">Scan</string>
+    <string name="groupes">Groupes</string>
+    <string name="home">Home</string>
 </resources>
