@@ -8,7 +8,7 @@
     android:background="@color/LimeWhite"
     tools:context=".DetailListActivity">
 
-    <!-- Top bar = nom de la liste (cliquable pour renommer) -->
+    <!-- Top bar -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="0dp"
@@ -30,8 +30,7 @@
         app:layout_constraintTop_toBottomOf="@id/topAppBar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_detail_list"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- BottomNavigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -46,7 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
-    <!-- FloatingActionButton “Add item” -->
+    <!-- FloatingActionButton -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddItem"
         android:layout_width="wrap_content"
