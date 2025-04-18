@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GroupActivity extends AppCompatActivity {
-
     private TextInputEditText groupNameEditText;
     private EditText memberUsernameEditText;
     private MaterialButton addMemberButton, saveGroupButton;

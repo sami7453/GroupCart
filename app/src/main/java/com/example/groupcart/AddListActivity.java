@@ -1,4 +1,4 @@
-package com.example.groupcart.list;
+package com.example.groupcart;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,11 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.groupcart.item.ItemsAdapter;
-import com.example.groupcart.Prefs;
-import com.example.groupcart.R;
+import com.example.groupcart.product.ProductAdapter;
 import com.example.groupcart.group.Group;
-import com.example.groupcart.item.ItemList;
+import com.example.groupcart.list.ListActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -39,7 +37,7 @@ public class AddListActivity extends AppCompatActivity {
 
     private List<String> items = new ArrayList<>();
     private ArrayAdapter<String>  suggestionAdapter;
-    private ItemsAdapter itemsAdapter;
+    private ProductAdapter itemsAdapter;
     private OkHttpClient client = new OkHttpClient();
     private String groupName;
 
@@ -75,7 +73,7 @@ public class AddListActivity extends AppCompatActivity {
         });
 
         // 2) RecyclerView des items ajoutés
-        itemsAdapter = new ItemsAdapter(items);
+        itemsAdapter = new ProductAdapter(items);
         rvItems.setLayoutManager(new LinearLayoutManager(this));
         rvItems.setAdapter(itemsAdapter);
 

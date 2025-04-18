@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.groupcart.HomeActivity;
 import com.example.groupcart.Prefs;
 import com.example.groupcart.R;
 
@@ -26,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
 
         signupButton.setOnClickListener(v ->
-                startActivity(new Intent(this, RegisterActivity.class))
+            startActivity(new Intent(this, RegisterActivity.class))
         );
 
         loginButton.setOnClickListener(v -> attemptLogin());

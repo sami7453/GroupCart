@@ -1,4 +1,4 @@
-package com.example.groupcart.item;
+package com.example.groupcart.product;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +12,10 @@ import com.example.groupcart.R;
 
 import java.util.List;
 
-public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.VH> {
-    private List<ItemList> items;
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.VH> {
+    private List<ProductList> items;
 
-    public ItemsAdapter(List<String> items) {
+    public ProductAdapter(List<String> items) {
         this.items = items;
     }
 

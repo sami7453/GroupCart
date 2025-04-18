@@ -9,15 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.groupcart.R;
-import com.example.groupcart.item.ItemList;
 
 import java.util.List;
 
-public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapter.VH> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
 
     private List<ItemList> shoppingLists;
 
-    public ShoppingListAdapter(List<ItemList> shoppingLists) {
+    public ListAdapter(List<ItemList> shoppingLists) {
         this.shoppingLists = shoppingLists;
     }
 

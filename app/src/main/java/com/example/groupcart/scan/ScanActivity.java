@@ -1,4 +1,4 @@
-package com.example.groupcart;
+package com.example.groupcart.scan;
 
 import android.app.Activity;
 

@@ -46,7 +46,7 @@
 
         <!-- Écran d'accueil après connexion -->
         <activity
-            android:name=".user.HomeActivity"
+            android:name=".HomeActivity"
             android:exported="false" />
 
         <!-- Gestion des groupes -->
@@ -61,13 +61,13 @@
 
         <!-- Ajout d'une nouvelle liste -->
         <activity
-            android:name=".list.AddListActivity"
+            android:name=".AddListActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:exported="false" />
 
         <!-- Scan de code-barres -->
         <activity
-            android:name=".ScanActivity"
+            android:name=".scan.ScanActivity"
             android:exported="false" />
 
         <!-- Détail d'un produit scanné -->
