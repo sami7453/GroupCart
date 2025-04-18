@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/LimeWhite"
-    tools:context=".list.ListActivity">
+    tools:context=".product.ProductListActivity">
 
     <!-- Top bar avec retour et titre dynamique -->
     <com.google.android.material.appbar.MaterialToolbar

@@ -17,11 +17,17 @@ public class Group {
         this.lists = new ArrayList<>();
     }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
-    public List<User> getMembers() { return members; }
+    public List<User> getMembers() {
+        return members;
+    }
 
-    public List<ProductList> getLists() { return lists; }
+    public List<ProductList> getLists() {
+        return lists;
+    }
 
     public void addMember(User member) {
         if (member != null && !members.contains(member)) {

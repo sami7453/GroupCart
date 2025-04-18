@@ -1,4 +1,4 @@
-package com.example.groupcart.list;
+package com.example.groupcart.product;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,13 +12,13 @@ import com.example.groupcart.AddListActivity;
 import com.example.groupcart.Prefs;
 import com.example.groupcart.R;
 import com.example.groupcart.group.Group;
-import com.example.groupcart.product.ProductList;
+import com.example.groupcart.list.ListAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListActivity extends AppCompatActivity {
+public class ProductListActivity extends AppCompatActivity {
     public static final String EXTRA_GROUP = "groupName";
 
     private RecyclerView rvLists;

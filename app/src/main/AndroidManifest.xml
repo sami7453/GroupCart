@@ -56,7 +56,7 @@
 
         <!-- Liste des listes d'un groupe -->
         <activity
-            android:name=".list.ListActivity"
+            android:name=".product.ProductListActivity"
             android:exported="false" />
 
         <!-- Ajout d'une nouvelle liste -->

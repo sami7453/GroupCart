@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.groupcart.list.ListActivity;
+import com.example.groupcart.product.ProductListActivity;
 import com.example.groupcart.R;
 
 import java.util.List;
@@ -44,8 +44,8 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHol
         // ← Ajout du listener pour naviguer vers ListActivity
         holder.itemView.setOnClickListener(v -> {
             Context ctx = v.getContext();
-            Intent intent = new Intent(ctx, ListActivity.class);
-            intent.putExtra(ListActivity.EXTRA_GROUP, group.getName());
+            Intent intent = new Intent(ctx, ProductListActivity.class);
+            intent.putExtra(ProductListActivity.EXTRA_GROUP, group.getName());
             ctx.startActivity(intent);
         });
     }

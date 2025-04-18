@@ -51,11 +51,12 @@ public class GroupActivity extends AppCompatActivity {
         rvMembers.setLayoutManager(new LinearLayoutManager(this));
         rvMembers.setAdapter(memberAdapter);
 
-        addMemberButton.setOnClickListener(v -> addMember());
+        addMemberButton.setOnClickListener(v -> onAddMember());
+        removeMemberButton.setOnClickListener(v -> onRemoveMember());
         saveGroupButton.setOnClickListener(v -> saveGroup());
     }
 
-    private void addMember() {
+    private void onAddMember() {
         String username = memberUsernameEditText.getText().toString().trim();
 
         if (TextUtils.isEmpty(username)) {
@@ -77,6 +78,10 @@ public class GroupActivity extends AppCompatActivity {
         memberUsernames.add(username);
         memberAdapter.update(memberUsernames);
         memberUsernameEditText.setText("");
+    }
+
+    private onRemoveMember() {
+
     }
 
     private void saveGroup() {
