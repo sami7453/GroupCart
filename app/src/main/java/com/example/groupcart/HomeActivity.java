@@ -33,7 +33,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Navigation en bas
         bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
 
@@ -56,13 +55,11 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        // Setup du RecyclerView
         recyclerView = findViewById(R.id.recyclerViewGroups);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ItemDetail(itemList);
         recyclerView.setAdapter(adapter);
 
-        // Appel à l'API pour récupérer les produits
         fetchProducts();
     }
 
