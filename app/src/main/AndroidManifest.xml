@@ -3,6 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.groupcart">
 
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <!-- Déclare la caméra comme optionnelle -->
+    <uses-feature android:name="android.hardware.camera"
+        android:required="false"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,36 +22,58 @@
         android:theme="@style/Theme.GroupCart"
         tools:targetApi="31">
 
-        <!-- Scan de code-barres -->
-        <activity android:name=".ScanActivity" />
-
-        <!-- Détail d'un produit scanné -->
-        <activity android:name=".DetailListActivity" />
-
-        <!-- Liste des items d'un groupe -->
-        <activity android:name=".ListActivity" />
-
-        <!-- Gestion des groupes -->
-        <activity android:name=".GroupActivity" />
-
-        <!-- Écran d'accueil après connexion -->
-        <activity android:name=".HomeActivity" />
-
-        <!-- Inscription -->
-        <activity android:name=".RegisterActivity" />
-
-        <!-- Connexion -->
-        <activity android:name=".LoginActivity" />
-
         <!-- Écran principal / point d'entrée -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <!-- Connexion -->
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:exported="false" />
+
+        <!-- Inscription -->
+        <activity
+            android:name=".RegisterActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:exported="false" />
+
+        <!-- Écran d'accueil après connexion -->
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+
+        <!-- Gestion des groupes -->
+        <activity
+            android:name=".GroupActivity"
+            android:exported="false" />
+
+        <!-- Liste des listes d'un groupe -->
+        <activity
+            android:name=".ListActivity"
+            android:exported="false" />
+
+        <!-- Ajout d'une nouvelle liste -->
+        <activity
+            android:name=".AddListActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:exported="false" />
+
+        <!-- Scan de code-barres -->
+        <activity
+            android:name=".ScanActivity"
+            android:exported="false" />
+
+        <!-- Détail d'un produit scanné -->
+        <activity
+            android:name=".DetailListActivity"
+            android:exported="false" />
 
     </application>
 </manifest>

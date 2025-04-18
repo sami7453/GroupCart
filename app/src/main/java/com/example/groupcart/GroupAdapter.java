@@ -1,5 +1,7 @@
 package com.example.groupcart;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHol
         this.groupList = groups;
     }
 
-
+    /** Met à jour la liste et notifie le RecyclerView */
     public void update(List<Group> groups) {
         this.groupList = groups;
         notifyDataSetChanged();
@@ -36,6 +38,14 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHol
     public void onBindViewHolder(@NonNull GroupViewHolder holder, int position) {
         Group group = groupList.get(position);
         holder.tvGroupName.setText(group.getName());
+
+        // ← Ajout du listener pour naviguer vers ListActivity
+        holder.itemView.setOnClickListener(v -> {
+            Context ctx = v.getContext();
+            Intent intent = new Intent(ctx, ListActivity.class);
+            intent.putExtra(ListActivity.EXTRA_GROUP, group.getName());
+            ctx.startActivity(intent);
+        });
     }
 
     @Override
@@ -48,6 +58,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHol
 
         public GroupViewHolder(@NonNull View itemView) {
             super(itemView);
+            // Assure-toi que dans item_group.xml, le TextView a bien l’ID tvListName ou tvGroupName
             tvGroupName = itemView.findViewById(R.id.textViewGroupName);
         }
     }

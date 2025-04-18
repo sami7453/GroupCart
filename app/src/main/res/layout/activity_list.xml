@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list_root"
@@ -8,7 +9,7 @@
     android:background="@color/LimeWhite"
     tools:context=".ListActivity">
 
-    <!-- Top bar avec retour et titre = nom du groupe -->
+    <!-- Top bar avec retour et titre dynamique -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="0dp"
@@ -16,14 +17,12 @@
         android:background="@color/Blueprint"
         app:navigationIcon="@android:drawable/ic_menu_revert"
         android:contentDescription="@string/back"
-        app:menu="@menu/top_app_bar_menu"
-        app:title="@string/group_name"
         app:titleTextColor="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- RecyclerView des listes du groupe -->
+    <!-- RecyclerView des "ShoppingList" du groupe -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLists"
         android:layout_width="0dp"
@@ -35,31 +34,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/item_list" />
 
-    <!-- BottomNavigation -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:background="@color/Blueprint"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
-
     <!-- FloatingActionButton “Add list” -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginEnd="16dp"
         android:contentDescription="@string/add_list"
         android:src="@android:drawable/ic_menu_add"
         app:backgroundTint="@color/Blueprint"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+        app:tint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@android:color/white" />
+        android:layout_margin="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

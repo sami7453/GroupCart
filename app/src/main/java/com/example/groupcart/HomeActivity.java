@@ -2,8 +2,11 @@ package com.example.groupcart;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;  // ou MaterialToolbar si tu préfères
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,34 +15,51 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
+
     private RecyclerView rvGroups;
-    private GroupAdapter adapter;
+    private GroupAdapter groupAdapter;
     private FloatingActionButton fabAddGroup;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        rvGroups     = findViewById(R.id.recyclerViewGroups);
-        fabAddGroup  = findViewById(R.id.fabAddGroup);
+        // Barre d'outils avec logout
+        Toolbar toolbar = findViewById(R.id.topAppBar);
+        toolbar.setTitle("GroupCart");
+        toolbar.setOnMenuItemClickListener(this::onOptionsItemSelected);
 
-        // 1) Setup RecyclerView
+        // RecyclerView des groupes
+        rvGroups = findViewById(R.id.recyclerViewGroups);
         rvGroups.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new GroupAdapter(Prefs.with(this).loadGroups());
-        rvGroups.setAdapter(adapter);
+        groupAdapter = new GroupAdapter(Prefs.with(this).loadGroups());
+        rvGroups.setAdapter(groupAdapter);
 
-        // 2) Bouton pour créer un nouveau groupe
-        fabAddGroup.setOnClickListener(v -> {
-            startActivity(new Intent(this, GroupActivity.class));
-        });
+        // FloatingActionButton pour créer un groupe
+        fabAddGroup = findViewById(R.id.fabAddGroup);
+        fabAddGroup.setOnClickListener(v ->
+                startActivity(new Intent(this, GroupActivity.class))
+        );
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // Recharge la liste à chaque retour sur l'écran
+        // Recharge la liste des groupes après chaque retour
         List<Group> groups = Prefs.with(this).loadGroups();
-        adapter.update(groups);
+        groupAdapter.update(groups);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_logout) {
+            // Déconnexion
+            Prefs.with(this).clearCurrentUser();
+            startActivity(new Intent(this, LoginActivity.class)
+                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
