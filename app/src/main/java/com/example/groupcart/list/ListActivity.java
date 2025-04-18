@@ -1,4 +1,4 @@
-package com.example.groupcart;
+package com.example.groupcart.list;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.groupcart.Prefs;
+import com.example.groupcart.R;
+import com.example.groupcart.group.Group;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;

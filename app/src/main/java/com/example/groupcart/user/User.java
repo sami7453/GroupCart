@@ -1,4 +1,4 @@
-package com.example.groupcart;
+package com.example.groupcart.user;
 
 public class User {
     private String username;
@@ -13,5 +13,5 @@ public class User {
 
     public String getUsername() { return username; }
     public String getPassword() { return password; }
-    public String getEmail()    { return email;    }
+    public String getEmail() { return email; }
 }

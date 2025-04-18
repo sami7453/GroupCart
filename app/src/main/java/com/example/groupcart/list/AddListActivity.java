@@ -1,4 +1,4 @@
-package com.example.groupcart;
+package com.example.groupcart.list;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.groupcart.item.ItemsAdapter;
+import com.example.groupcart.Prefs;
+import com.example.groupcart.R;
+import com.example.groupcart.group.Group;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -27,17 +31,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddListActivity extends AppCompatActivity {
-    private TextInputEditText     etListName;
+    private TextInputEditText listNameEditText;
     private AutoCompleteTextView  acvProduct;
-    private MaterialButton        btnAddItem, btnSaveList;
-    private RecyclerView          rvItems;
+    private MaterialButton addItemButton, saveListButton;
+    private RecyclerView rvItems;
 
-    private List<String>          items = new ArrayList<>();
+    private List<String> items = new ArrayList<>();
     private ArrayAdapter<String>  suggestionAdapter;
-    private ItemsAdapter          itemsAdapter;
-
-    private OkHttpClient          client = new OkHttpClient();
-    private String                groupName;
+    private ItemsAdapter itemsAdapter;
+    private OkHttpClient client = new OkHttpClient();
+    private String groupName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +51,10 @@ public class AddListActivity extends AppCompatActivity {
         groupName = getIntent().getStringExtra(ListActivity.EXTRA_GROUP);
 
         // Lier les vues
-        etListName = findViewById(R.id.etListName);
+        listNameEditText = findViewById(R.id.etListName);
         acvProduct = findViewById(R.id.acvProduct);
-        btnAddItem = findViewById(R.id.btnAddItem);
-        btnSaveList= findViewById(R.id.btnSaveList);
+        addItemButton = findViewById(R.id.btnAddItem);
+        saveListButton = findViewById(R.id.btnSaveList);
         rvItems    = findViewById(R.id.rvListItems);
 
         // 1) Adapter pour l'AutoCompleteTextView
@@ -76,7 +79,7 @@ public class AddListActivity extends AppCompatActivity {
         rvItems.setAdapter(itemsAdapter);
 
         // 3) Bouton “Add Item”
-        btnAddItem.setOnClickListener(v -> {
+        addItemButton.setOnClickListener(v -> {
             String prod = acvProduct.getText().toString().trim();
             if (!prod.isEmpty()) {
                 items.add(prod);
@@ -86,7 +89,7 @@ public class AddListActivity extends AppCompatActivity {
         });
 
         // 4) Bouton “Save List”
-        btnSaveList.setOnClickListener(v -> saveList());
+        saveListButton.setOnClickListener(v -> saveList());
     }
 
     /** Recherche les suggestions produits via OpenFoodFacts */
@@ -122,7 +125,7 @@ public class AddListActivity extends AppCompatActivity {
 
     /** Sauvegarde la nouvelle liste dans le groupe courant */
     private void saveList() {
-        String name = etListName.getText().toString().trim();
+        String name = listNameEditText.getText().toString().trim();
         if (name.isEmpty() || items.isEmpty()) {
             Toast.makeText(
                     this,

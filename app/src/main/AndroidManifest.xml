@@ -34,34 +34,34 @@
 
         <!-- Connexion -->
         <activity
-            android:name=".LoginActivity"
+            android:name=".user.LoginActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:exported="false" />
 
         <!-- Inscription -->
         <activity
-            android:name=".RegisterActivity"
+            android:name=".user.RegisterActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:exported="false" />
 
         <!-- Écran d'accueil après connexion -->
         <activity
-            android:name=".HomeActivity"
+            android:name=".user.HomeActivity"
             android:exported="false" />
 
         <!-- Gestion des groupes -->
         <activity
-            android:name=".GroupActivity"
+            android:name=".group.GroupActivity"
             android:exported="false" />
 
         <!-- Liste des listes d'un groupe -->
         <activity
-            android:name=".ListActivity"
+            android:name=".list.ListActivity"
             android:exported="false" />
 
         <!-- Ajout d'une nouvelle liste -->
         <activity
-            android:name=".AddListActivity"
+            android:name=".list.AddListActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:exported="false" />
 
@@ -72,7 +72,7 @@
 
         <!-- Détail d'un produit scanné -->
         <activity
-            android:name=".DetailListActivity"
+            android:name=".list.DetailListActivity"
             android:exported="false" />
 
     </application>

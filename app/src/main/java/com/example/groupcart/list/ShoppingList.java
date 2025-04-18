@@ -1,4 +1,4 @@
-package com.example.groupcart;
+package com.example.groupcart.list;
 
 import java.util.List;
 

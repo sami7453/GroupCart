@@ -1,4 +1,4 @@
-package com.example.groupcart;
+package com.example.groupcart.group;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.groupcart.list.ListActivity;
+import com.example.groupcart.R;
+
 import java.util.List;
 
 public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHolder> {
@@ -20,7 +23,6 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHol
         this.groupList = groups;
     }
 
-    /** Met à jour la liste et notifie le RecyclerView */
     public void update(List<Group> groups) {
         this.groupList = groups;
         notifyDataSetChanged();
@@ -58,7 +60,6 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHol
 
         public GroupViewHolder(@NonNull View itemView) {
             super(itemView);
-            // Assure-toi que dans item_group.xml, le TextView a bien l’ID tvListName ou tvGroupName
             tvGroupName = itemView.findViewById(R.id.textViewGroupName);
         }
     }

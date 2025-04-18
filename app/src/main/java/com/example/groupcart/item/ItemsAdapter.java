@@ -1,4 +1,4 @@
-package com.example.groupcart;
+package com.example.groupcart.item;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.groupcart.R;
 
 import java.util.List;
 
@@ -17,7 +19,6 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.VH> {
         this.items = items;
     }
 
-    /** Met à jour la liste et notifie le recyclerview */
     public void update(List<String> newItems) {
         this.items = newItems;
         notifyDataSetChanged();

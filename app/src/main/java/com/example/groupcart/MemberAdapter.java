@@ -11,9 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MemberAdapter
-        extends RecyclerView.Adapter<MemberAdapter.VH> {
-
+public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.VH> {
     public interface OnDeleteListener {
         void onDelete(String username);
     }

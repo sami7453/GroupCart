@@ -3,6 +3,8 @@ package com.example.groupcart;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.groupcart.group.Group;
+import com.example.groupcart.user.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

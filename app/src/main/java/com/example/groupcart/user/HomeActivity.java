@@ -1,4 +1,4 @@
-package com.example.groupcart;
+package com.example.groupcart.user;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +10,16 @@ import androidx.appcompat.widget.Toolbar;  // ou MaterialToolbar si tu préfère
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.groupcart.Prefs;
+import com.example.groupcart.R;
+import com.example.groupcart.group.Group;
+import com.example.groupcart.group.GroupActivity;
+import com.example.groupcart.group.GroupAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
-
     private RecyclerView rvGroups;
     private GroupAdapter groupAdapter;
     private FloatingActionButton fabAddGroup;

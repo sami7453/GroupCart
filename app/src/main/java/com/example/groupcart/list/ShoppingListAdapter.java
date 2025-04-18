@@ -1,4 +1,4 @@
-package com.example.groupcart;
+package com.example.groupcart.list;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.groupcart.R;
 
 import java.util.List;
 
@@ -18,7 +20,6 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
         this.shoppingLists = shoppingLists;
     }
 
-    /** Met à jour les données et recharge la vue */
     public void update(List<ShoppingList> newLists) {
         this.shoppingLists = newLists;
         notifyDataSetChanged();
@@ -36,7 +37,6 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
     public void onBindViewHolder(@NonNull VH holder, int position) {
         ShoppingList list = shoppingLists.get(position);
         holder.tvListName.setText(list.getName());
-        // Optionnel : afficher le nombre d'items, ex. holder.tvItemCount.setText(...)
     }
 
     @Override

@@ -1,4 +1,6 @@
-package com.example.groupcart;
+package com.example.groupcart.group;
+
+import com.example.groupcart.list.ShoppingList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,15 +8,14 @@ import java.util.List;
 public class Group {
     private String name;
     private List<String> members;
-    private List<ShoppingList> lists;  // ← Nouvel ajout
+    private List<ShoppingList> lists;
 
     public Group(String name, List<String> members) {
         this.name = name;
         this.members = members;
-        this.lists = new ArrayList<>(); // initialisation
+        this.lists = new ArrayList<>();
     }
 
-    // Pour gson
     public List<ShoppingList> getLists() { return lists; }
     public void setLists(List<ShoppingList> lists) {
         this.lists = lists;
