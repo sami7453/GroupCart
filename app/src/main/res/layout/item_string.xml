@@ -11,7 +11,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Exemple d’item"
+        android:text="@string/exemple_d_item"
         android:textSize="16sp"
         android:textColor="@color/RegalBlue"/>
+
+    <ImageButton
+        android:id="@+id/btnRemoveItem"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:background="@null"
+        android:contentDescription="@string/remove_item" />
 </LinearLayout>

@@ -70,4 +70,6 @@
     <string name="scan">Scan</string>
     <string name="groupes">Groupes</string>
     <string name="home">Home</string>
+    <string name="remove_item">Remove_Item</string>
+    <string name="exemple_d_item">Exemple d’item</string>
 </resources>
