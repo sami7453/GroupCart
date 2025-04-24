@@ -16,13 +16,6 @@
     <string name="hint_name">Nom</string>
     <string name="hint_phone">Téléphone</string>
 
-    <!-- Titres communs -->
-    <string name="title_login">Connexion</string>
-    <string name="title_register">Inscription</string>
-    <string name="title_profile">Profil</string>
-    <string name="title_settings">Paramètres</string>
-    <string name="title_home">Accueil</string>
-
     <!-- item_user -->
     <string name="profile_picture">Profile picture</string>
     <string name="username_placeholder">Username placeholder</string>
@@ -31,9 +24,11 @@
     <!-- item_product -->
     <string name="product_picture">Product picture</string>
     <string name="product_name_placeholder">Product name placeholder</string>
+    <string name="product_price_placeholder">Product price placeholder</string>
 
     <!-- item_list -->
     <string name="list_name_placeholder">List name placeholder</string>
+    <string name="product_count_placeholder">Product count placeholder</string>
     <string name="delete_list">Delete list</string>
 
     <!-- item_group -->

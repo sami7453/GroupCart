@@ -17,14 +17,30 @@
         android:contentDescription="@string/product_picture"
         android:scaleType="centerCrop" />
 
-    <!-- Product name text view -->
-    <TextView
-        android:id="@+id/productNameTextView"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/product_name_placeholder"
-        android:textSize="18sp"
-        android:textColor="#1F5C63"/>
+        android:orientation="vertical">
+
+        <!-- Product name text view -->
+        <TextView
+            android:id="@+id/productNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/product_name_placeholder"
+            android:textSize="18sp"
+            android:textColor="#1F5C63"/>
+
+        <!-- Product price text view -->
+        <TextView
+            android:id="@+id/productPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/product_price_placeholder"
+            android:textSize="14sp"
+            android:textColor="#888888"/>
+
+    </LinearLayout>
 
 </LinearLayout>

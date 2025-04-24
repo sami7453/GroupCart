@@ -34,6 +34,7 @@ public class ListRecyclerViewAdapter extends RecyclerView.Adapter<ListRecyclerVi
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         ListModel list = lists.get(position);
         holder.listNameTextView.setText(list.getName());
+        holder.productCountTextView.setText(list.getProducts().size());
     }
 
     @Override
@@ -43,10 +44,12 @@ public class ListRecyclerViewAdapter extends RecyclerView.Adapter<ListRecyclerVi
 
     static class ListViewHolder extends RecyclerView.ViewHolder {
         TextView listNameTextView;
+        TextView productCountTextView;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
             listNameTextView = itemView.findViewById(R.id.listNameTextView);
+            productCountTextView = itemView.findViewById(R.id.productCountTextView);
         }
     }
 }

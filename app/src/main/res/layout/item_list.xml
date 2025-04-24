@@ -4,17 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:gravity="center_vertical">
 
-    <!-- List name text view -->
-    <TextView
-        android:id="@+id/listNameTextView"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/list_name_placeholder"
-        android:textSize="18sp"
-        android:textColor="#1F5C63" />
+        android:orientation="vertical">
+
+        <!-- List name text view -->
+        <TextView
+            android:id="@+id/listNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/list_name_placeholder"
+            android:textSize="18sp"
+            android:textColor="#1F5C63" />
+
+        <!-- Product count text view -->
+        <TextView
+            android:id="@+id/productCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/product_count_placeholder"
+            android:textSize="14sp"
+            android:textColor="#888888"/>
+
+    </LinearLayout>
 
     <!-- Delete list button -->
     <ImageButton
