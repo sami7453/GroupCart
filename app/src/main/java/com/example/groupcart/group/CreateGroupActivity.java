@@ -49,7 +49,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         addMemberButton.setOnClickListener(v -> onAddMember());
 
         // Save group button
-        MaterialButton saveGroupButton = findViewById(R.id.saveButton);
+        MaterialButton saveGroupButton = findViewById(R.id.saveGroupButton);
         saveGroupButton.setOnClickListener(v -> onSaveGroup());
     }
 

@@ -34,12 +34,9 @@ import java.util.List;
 public class CreateListActivity extends AppCompatActivity {
     private TextInputEditText listNameEditText;
     private AutoCompleteTextView  acvProduct;
-    private MaterialButton addItemButton, saveListButton;
-    private RecyclerView rvItems;
-
+    private MaterialButton addItemButton;
     private List<String> items = new ArrayList<>();
     private ArrayAdapter<String>  suggestionAdapter;
-    private ProductRecyclerViewAdapter itemsAdapter;
     private OkHttpClient client = new OkHttpClient();
     private String groupName;
 
@@ -51,12 +48,10 @@ public class CreateListActivity extends AppCompatActivity {
         // Récupérer le nom du groupe passé depuis ListActivity
         groupName = getIntent().getStringExtra(ProductsActivity.EXTRA_GROUP);
 
-        // Lier les vues
+
         listNameEditText = findViewById(R.id.etListName);
         acvProduct = findViewById(R.id.acvProduct);
         addItemButton = findViewById(R.id.btnAddItem);
-        saveListButton = findViewById(R.id.btnSaveList);
-        rvItems    = findViewById(R.id.rvListItems);
 
         // 1) Adapter pour l'AutoCompleteTextView
         suggestionAdapter = new ArrayAdapter<>(
@@ -74,11 +69,6 @@ public class CreateListActivity extends AppCompatActivity {
             @Override public void afterTextChanged(Editable s) {}
         });
 
-        // 2) RecyclerView des items ajoutés
-        itemsAdapter = new ProductRecyclerViewAdapter(items);
-        rvItems.setLayoutManager(new LinearLayoutManager(this));
-        rvItems.setAdapter(itemsAdapter);
-
         // 3) Bouton “Add Item”
         addItemButton.setOnClickListener(v -> {
             String prod = acvProduct.getText().toString().trim();
@@ -89,11 +79,17 @@ public class CreateListActivity extends AppCompatActivity {
             }
         });
 
-        // 4) Bouton “Save List”
-        saveListButton.setOnClickListener(v -> saveList());
+        // Product recycler view
+        RecyclerView productRecyclerView = findViewById(R.id.productRecyclerView);
+        ProductRecyclerViewAdapter adapter = new ProductRecyclerViewAdapter(this, ??);
+        productRecyclerView.setAdapter(adapter);
+        productRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Save list button
+        MaterialButton saveListButton = findViewById(R.id.saveListButton);
+        saveListButton.setOnClickListener(v -> onSaveList());
     }
 
-    /** Recherche les suggestions produits via OpenFoodFacts */
     private void fetchSuggestions(String query) {
         new Thread(() -> {
             String url = "https://world.openfoodfacts.org/cgi/search.pl"
@@ -124,8 +120,7 @@ public class CreateListActivity extends AppCompatActivity {
         }).start();
     }
 
-    /** Sauvegarde la nouvelle liste dans le groupe courant */
-    private void saveList() {
+    private void onSaveList() {
         String name = listNameEditText.getText().toString().trim();
         if (name.isEmpty() || items.isEmpty()) {
             Toast.makeText(

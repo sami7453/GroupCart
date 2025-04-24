@@ -16,7 +16,7 @@ public class ListsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_groups);
+        setContentView(R.layout.activity_lists);
 
         // Top bar
         Toolbar topBar = findViewById(R.id.topBar);
@@ -30,7 +30,7 @@ public class ListsActivity extends AppCompatActivity {
         groupRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Create list button
-        FloatingActionButton createGroupButton = findViewById(R.id.createGroupButton);
+        FloatingActionButton createGroupButton = findViewById(R.id.createListButton);
         createGroupButton.setOnClickListener(v ->
             startActivity(new Intent(this, CreateListActivity.class))
         );
