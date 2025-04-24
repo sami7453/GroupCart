@@ -8,8 +8,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.groupcart.AddListActivity;
-import com.example.groupcart.Prefs;
+import com.example.groupcart.list.CreateListActivity;
+import com.example.groupcart.utils.Prefs;
 import com.example.groupcart.R;
 import com.example.groupcart.group.GroupModel;
 import com.example.groupcart.list.ListAdapter;
@@ -63,7 +63,7 @@ public class ProductListActivity extends AppCompatActivity {
         // 6) FAB pour ajouter une nouvelle liste
         FloatingActionButton fab = findViewById(R.id.fabAddList);
         fab.setOnClickListener(v -> {
-            Intent i = new Intent(this, AddListActivity.class);
+            Intent i = new Intent(this, CreateListActivity.class);
             i.putExtra(EXTRA_GROUP, groupName);
             startActivity(i);
         });

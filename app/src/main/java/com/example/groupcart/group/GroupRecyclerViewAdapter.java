@@ -33,7 +33,7 @@ public class GroupRecyclerViewAdapter extends RecyclerView.Adapter<GroupRecycler
     @Override
     public void onBindViewHolder(@NonNull GroupViewHolder holder, int position) {
         GroupModel group = groups.get(position);
-        holder.groupNameText.setText(group.getName());
+        holder.groupNameTextView.setText(group.getName());
     }
 
     @Override
@@ -42,11 +42,11 @@ public class GroupRecyclerViewAdapter extends RecyclerView.Adapter<GroupRecycler
     }
 
     static class GroupViewHolder extends RecyclerView.ViewHolder {
-        TextView groupNameText;
+        TextView groupNameTextView;
 
         public GroupViewHolder(@NonNull View itemView) {
             super(itemView);
-            groupNameText = itemView.findViewById(R.id.text);
+            groupNameTextView = itemView.findViewById(R.id.textView);
         }
     }
 }

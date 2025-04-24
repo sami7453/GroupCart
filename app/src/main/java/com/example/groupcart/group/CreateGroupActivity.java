@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.groupcart.Prefs;
+import com.example.groupcart.utils.Prefs;
 import com.example.groupcart.R;
 import com.example.groupcart.user.UserModel;
 import com.example.groupcart.user.UserRecyclerViewAdapter;
@@ -22,10 +22,9 @@ import java.util.List;
 
 public class CreateGroupActivity extends AppCompatActivity {
     private TextInputEditText groupNameEditText;
-    private EditText memberUsernameEditText;
-    private MaterialButton addMemberButton, saveGroupButton;
-    private RecyclerView memberList;
-    private List<String> memberUsernames = new ArrayList<>();
+    private EditText usernameEditText;
+    private List<UserModel> memberUsers = new ArrayList<>();
+    private UserRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,33 +32,41 @@ public class CreateGroupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_group);
 
         groupNameEditText = findViewById(R.id.groupNameEditText);
-        memberUsernameEditText = findViewById(R.id.usernameEditText);
-        addMemberButton = findViewById(R.id.addMemberButton);
-        saveGroupButton = findViewById(R.id.saveButton);
-        memberList = findViewById(R.id.memberList);
+        usernameEditText = findViewById(R.id.usernameEditText);
 
-        MaterialToolbar toolbar = findViewById(R.id.topAppBar);
+        // Top bar
+        MaterialToolbar toolbar = findViewById(R.id.topBar);
         toolbar.setNavigationOnClickListener(v -> finish());
 
-        UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(this, ??);
-        memberList.setAdapter(adapter);
-        memberList.setLayoutManager(new LinearLayoutManager(this));
+        // User recycler view
+        RecyclerView userRecyclerView = findViewById(R.id.userRecyclerView);
+        adapter = new UserRecyclerViewAdapter(this, ??);
+        userRecyclerView.setAdapter(adapter);
+        userRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // Add member button
+        MaterialButton addMemberButton = findViewById(R.id.addMemberButton);
         addMemberButton.setOnClickListener(v -> onAddMember());
-        saveGroupButton.setOnClickListener(v -> saveGroup());
+
+        // Save group button
+        MaterialButton saveGroupButton = findViewById(R.id.saveButton);
+        saveGroupButton.setOnClickListener(v -> onSaveGroup());
     }
 
     private void onAddMember() {
-        String username = memberUsernameEditText.getText().toString().trim();
+        String username = usernameEditText.getText().toString().trim();
 
         if (TextUtils.isEmpty(username)) {
             Toast.makeText(this, "Empty username", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (memberUsernames.contains(username)) {
-            Toast.makeText(this, "User already in group", Toast.LENGTH_SHORT).show();
-            return;
+        // Prevent adding same user twice
+        for (UserModel user : memberUsers) {
+            if (user.getUsername().equals(username)) {
+                Toast.makeText(this, "User already in group", Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
 
         UserModel user = getUserByUsername(username);
@@ -68,70 +75,42 @@ public class CreateGroupActivity extends AppCompatActivity {
             return;
         }
 
-        memberUsernames.add(username);
-        memberAdapter.update(memberUsernames);
-        memberUsernameEditText.setText("");
+        memberUsers.add(user);
+        adapter.notifyItemInserted(memberUsers.size() - 1);
+        usernameEditText.setText("");
     }
 
-    private onRemoveMember() {
-
+    private void onRemoveMember() {
+        // TODO:
     }
 
-    private void saveGroup() {
+    private void onSaveGroup() {
         String groupName = groupNameEditText.getText().toString().trim();
 
         if (TextUtils.isEmpty(groupName)) {
-            Toast.makeText(this, "Nom du groupe requis", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Group name can't be empty", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        List<UserModel> allUsers = Prefs.with(this).loadUsers();
-        List<UserModel> selectedMembers = new ArrayList<>();
-
-        for (String username : memberUsernames) {
-            UserModel user = getUserByUsername(username, allUsers);
-            if (user != null) {
-                selectedMembers.add(user);
-            }
+        if (memberUsers.isEmpty()) {
+            Toast.makeText(this, "Add at least one member", Toast.LENGTH_SHORT).show();
+            return;
         }
 
         GroupModel newGroup = new GroupModel(groupName);
-        for (UserModel member : selectedMembers) {
-            newGroup.addMember(member);
-        }
+        newGroup.getMembers().addAll(memberUsers);
 
-        // Save group to global list
-        List<GroupModel> allGroups = Prefs.with(this).loadGroups();
-        allGroups.add(newGroup);
-        Prefs.with(this).saveGroups(allGroups);
+        Prefs prefs = Prefs.with(this);
+        List<GroupModel> existingGroups = prefs.loadGroups();
+        existingGroups.add(newGroup);
+        prefs.saveGroups(existingGroups);
 
-        // Save group to each user's personal list
-        for (UserModel member : selectedMembers) {
-            List<GroupModel> userGroups = Prefs.with(this).loadGroupsForUser(member.getUsername());
-            boolean alreadyInGroup = false;
-            for (GroupModel g : userGroups) {
-                if (g.getName().equals(groupName)) {
-                    alreadyInGroup = true;
-                    break;
-                }
-            }
-
-            if (!alreadyInGroup) {
-                userGroups.add(newGroup);
-                Prefs.with(this).saveGroupsForUser(member.getUsername(), userGroups);
-            }
-        }
-
-        Toast.makeText(this, "Groupe crée !", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Group created!", Toast.LENGTH_SHORT).show();
         finish();
     }
 
     private UserModel getUserByUsername(String username) {
-        return getUserByUsername(username, Prefs.with(this).loadUsers());
-    }
-
-    private UserModel getUserByUsername(String username, List<UserModel> users) {
-        for (UserModel user : users) {
+        for (UserModel user : Prefs.with(this).loadUsers()) {
             if (user.getUsername().equals(username)) {
                 return user;
             }

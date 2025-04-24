@@ -1,4 +1,4 @@
-package com.example.groupcart.user;
+package com.example.groupcart;
 
 import android.os.Bundle;
 import android.util.Patterns;
@@ -7,8 +7,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.groupcart.Prefs;
-import com.example.groupcart.R;
+import com.example.groupcart.user.UserModel;
+import com.example.groupcart.utils.Prefs;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText usernameEditText, emailEditText, passwordEditText;
@@ -48,7 +48,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         boolean ok = Prefs.with(this).addUser(new UserModel(username, password, email));
-
         if (!ok) {
             Toast.makeText(this, "Username already taken", Toast.LENGTH_SHORT).show();
             return;

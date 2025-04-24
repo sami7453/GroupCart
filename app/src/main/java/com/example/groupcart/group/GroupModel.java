@@ -1,5 +1,6 @@
 package com.example.groupcart.group;
 
+import com.example.groupcart.list.ListModel;
 import com.example.groupcart.user.UserModel;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 public class GroupModel {
     private String name;
     private List<UserModel> members;
-    private List<ProductList> lists;
+    private List<ListModel> lists;
 
     public GroupModel(String name) {
         this.name = name;
@@ -24,7 +25,7 @@ public class GroupModel {
         return members;
     }
 
-    public List<ProductList> getLists() {
+    public List<ListModel> getLists() {
         return lists;
     }
 }

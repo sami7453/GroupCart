@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/LimeWhite"
-    tools:context=".AddListActivity">
+    tools:context=".list.CreateListActivity">
 
     <!-- Top bar avec retour -->
     <com.google.android.material.appbar.MaterialToolbar

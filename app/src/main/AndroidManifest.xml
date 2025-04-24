@@ -34,13 +34,13 @@
 
         <!-- Connexion -->
         <activity
-            android:name=".user.LoginActivity"
+            android:name=".LoginActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:exported="false" />
 
         <!-- Inscription -->
         <activity
-            android:name=".user.RegisterActivity"
+            android:name=".RegisterActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:exported="false" />
 
@@ -61,7 +61,7 @@
 
         <!-- Ajout d'une nouvelle liste -->
         <activity
-            android:name=".AddListActivity"
+            android:name=".list.CreateListActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:exported="false" />
 

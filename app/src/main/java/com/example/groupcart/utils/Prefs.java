@@ -1,4 +1,4 @@
-package com.example.groupcart;
+package com.example.groupcart.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

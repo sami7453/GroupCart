@@ -2,7 +2,6 @@ package com.example.groupcart;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,19 +9,15 @@ import androidx.appcompat.widget.Toolbar;  // ou MaterialToolbar si tu préfère
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.groupcart.group.GroupModel;
 import com.example.groupcart.group.CreateGroupActivity;
 import com.example.groupcart.group.GroupRecyclerViewAdapter;
-import com.example.groupcart.user.LoginActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_groups);
 
         // Top bar
         Toolbar topBar = findViewById(R.id.topBar);

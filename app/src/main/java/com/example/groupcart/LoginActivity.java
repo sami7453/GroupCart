@@ -1,4 +1,4 @@
-package com.example.groupcart.user;
+package com.example.groupcart;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.groupcart.HomeActivity;
-import com.example.groupcart.Prefs;
-import com.example.groupcart.R;
+import com.example.groupcart.utils.Prefs;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText usernameEditText, passwordEditText;

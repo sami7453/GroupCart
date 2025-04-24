@@ -1,4 +1,4 @@
-package com.example.groupcart;
+package com.example.groupcart.list;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.groupcart.utils.Prefs;
+import com.example.groupcart.R;
 import com.example.groupcart.product.ProductRecyclerViewAdapter;
 import com.example.groupcart.group.GroupModel;
 import com.example.groupcart.product.ProductListActivity;
@@ -29,7 +31,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddListActivity extends AppCompatActivity {
+public class CreateListActivity extends AppCompatActivity {
     private TextInputEditText listNameEditText;
     private AutoCompleteTextView  acvProduct;
     private MaterialButton addItemButton, saveListButton;

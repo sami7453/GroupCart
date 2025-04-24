@@ -70,9 +70,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/usernameEditText" />
 
-    <!-- Member recycler view -->
+    <!-- User recycler view -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/memberRecyclerView"
+        android:id="@+id/userRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -82,7 +82,7 @@
         app:layout_constraintBottom_toTopOf="@+id/saveButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_deletable" />
+        tools:listitem="@layout/item_not_deletable" />
 
     <!-- Save button -->
     <com.google.android.material.button.MaterialButton
