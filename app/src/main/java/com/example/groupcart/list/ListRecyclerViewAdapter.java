@@ -46,7 +46,7 @@ public class ListRecyclerViewAdapter extends RecyclerView.Adapter<ListRecyclerVi
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
-            listNameTextView = itemView.findViewById(R.id.textView);
+            listNameTextView = itemView.findViewById(R.id.listNameTextView);
         }
     }
 }

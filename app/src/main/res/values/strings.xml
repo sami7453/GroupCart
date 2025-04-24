@@ -23,7 +23,9 @@
     <string name="title_settings">Paramètres</string>
     <string name="title_home">Accueil</string>
 
-    <!-- Autres textes utiles -->
+    <!-- item_user -->
+    <string name="username_placeholder">Username placeholder</string>
+    <string name="delete_user">Delete user</string>
 
     <!-- item_product -->
     <string name="product_name_placeholder">Product name placeholder</string>
@@ -32,6 +34,28 @@
     <string name="list_name_placeholder">List name placeholder</string>
     <string name="delete_list">Delete list</string>
 
+    <!-- item_group -->
+    <string name="group_name">Group name placeholder</string>
+    <string name="delete_group">Delete group</string>
+
+    <!-- activity_register & activity_login -->
+    <string name="username">Username</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="email">Email</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="password">Password</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="register">Register</string>
+
+    <!-- activity_main -->
+    <string name="catchPhrase">One list, a thousand ways to make sure you don\'t forget anything.</string>
+    <string name="start_now">Start now</string>
+
+    <!-- activity_groups -->
+    <string name="back">Back</string>
+    <string name="add_group">Add a group</string>
+
+
     <string name="text_or">OU</string>
     <string name="text_remember_me">Remember me</string>
     <string name="text_forgot_password">Mot de passe oublié ?</string>
@@ -39,20 +63,12 @@
     <string name="text_privacy_policy">Politique de confidentialité</string>
     <string name="create_account_prompt">Pas encore de compte ? Créer un compte</string>
     <string name="forgot_password">Mot de passe oublié ?</string>
-    <string name="catchPhrase">One list, a thousand ways to make sure you don\'t forget anything.</string>
-    <string name="start_now">Start now</string>
-    <string name="enter_your_username">Enter your username</string>
-    <string name="password">Password</string>
-    <string name="enter_your_password">Enter your password</string>
-    <string name="register">Register</string>
+
     <string name="login">Login</string>
-    <string name="email">Email</string>
-    <string name="enter_your_email">Enter your email</string>
+
+
     <string name="logout">LogOut</string>
-    <string name="back">Back</string>
-    <string name="add_group">Add a group</string>
-    <string name="group_name">Group name placeholder</string>
-    <string name="username">Username</string>
+
     <string name="add">Add</string>
     <string name="save">Save</string>
     <string name="lists">Lists</string>

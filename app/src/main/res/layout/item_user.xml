@@ -4,24 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="12dp">
+    android:padding="16dp">
 
-    <!-- Group name text view -->
+    <!-- Username text view -->
     <TextView
-        android:id="@+id/groupNameTextView"
+        android:id="@+id/usernameTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/group_name"
-        android:textSize="16sp"
-        android:textColor="#1F5C63" />
+        android:text="@string/username_placeholder"
+        android:textSize="18sp"
+        android:textColor="#1F5C63"/>
 
-    <!-- Delete group button -->
+    <!-- Delete user button -->
     <ImageButton
-        android:id="@+id/deleteGroupButton"
+        android:id="@+id/deleteUserButton"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@android:drawable/ic_menu_close_clear_cancel"
         android:background="@null"
-        android:contentDescription="@string/delete_group" />
+        android:contentDescription="@string/delete_user" />
+
 </LinearLayout>

@@ -26,7 +26,7 @@ public class GroupRecyclerViewAdapter extends RecyclerView.Adapter<GroupRecycler
     @Override
     public GroupViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.item_list, parent, false);
+        View view = inflater.inflate(R.layout.item_group, parent, false);
         return new GroupViewHolder(view);
     }
 
@@ -46,7 +46,7 @@ public class GroupRecyclerViewAdapter extends RecyclerView.Adapter<GroupRecycler
 
         public GroupViewHolder(@NonNull View itemView) {
             super(itemView);
-            groupNameTextView = itemView.findViewById(R.id.textView);
+            groupNameTextView = itemView.findViewById(R.id.groupNameTextView);
         }
     }
 }
