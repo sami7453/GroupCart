@@ -4,7 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:gravity="center_vertical">
+
+    <!-- Profile picture image view -->
+    <ImageView
+        android:id="@+id/profilePictureImageView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="12dp"
+        android:src="@android:drawable/sym_def_app_icon"
+        android:contentDescription="@string/profile_picture"
+        android:scaleType="centerCrop" />
 
     <!-- Username text view -->
     <TextView
@@ -13,16 +24,16 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/username_placeholder"
-        android:textSize="18sp"
-        android:textColor="#1F5C63"/>
+        android:textColor="#1F5C63"
+        android:textSize="18sp" />
 
     <!-- Delete user button -->
     <ImageButton
         android:id="@+id/deleteUserButton"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@android:drawable/ic_menu_close_clear_cancel"
         android:background="@null"
-        android:contentDescription="@string/delete_user" />
+        android:contentDescription="@string/delete_user"
+        android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
 </LinearLayout>

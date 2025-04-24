@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/LimeWhite"
-    tools:context=".HomeActivity">
+    tools:context=".group.GroupsActivity">
 
     <!-- Top bar -->
     <com.google.android.material.appbar.MaterialToolbar
@@ -55,7 +55,7 @@
         android:id="@+id/createGroupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/add_group"
+        android:contentDescription="@string/create_group"
         android:src="@android:drawable/ic_menu_add"
         app:tint="@android:color/white"
         app:backgroundTint="@color/Blueprint"

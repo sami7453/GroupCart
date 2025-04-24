@@ -27,7 +27,7 @@
         android:id="@+id/tilGroupName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/group_name"
+        android:hint="Enter group name..."
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="24dp"
@@ -54,11 +54,11 @@
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/tilGroupName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/addMemberButton" />
+        app:layout_constraintEnd_toStartOf="@+id/addUserButton" />
 
-    <!-- Add member button -->
+    <!-- Add user button -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/addMemberButton"
+        android:id="@+id/addUserButton"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:text="@string/add"
@@ -82,7 +82,7 @@
         app:layout_constraintBottom_toTopOf="@+id/saveButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_list" />
+        tools:listitem="@layout/item_user" />
 
     <!-- Save button -->
     <com.google.android.material.button.MaterialButton

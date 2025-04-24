@@ -3,11 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     tools:ignore="ExtraText">
 
-    <!--<item
-        android:id="@+id/navigation_home"
-        android:icon="@android:drawable/ic_menu_my_calendar"
-        android:title="@string/home" />-->
-
     <item
         android:id="@+id/navigation_groups"
         android:icon="@android:drawable/ic_menu_my_calendar"
@@ -17,10 +12,5 @@
         android:id="@+id/navigation_scan"
         android:icon="@android:drawable/ic_menu_camera"
         android:title="@string/scan" />
-
-    <!--<item
-        android:id="@+id/navigation_lists"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:title="@string/lists" />-->
 
 </menu>

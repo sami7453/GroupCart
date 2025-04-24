@@ -45,7 +45,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         userRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Add member button
-        MaterialButton addMemberButton = findViewById(R.id.addMemberButton);
+        MaterialButton addMemberButton = findViewById(R.id.addUserButton);
         addMemberButton.setOnClickListener(v -> onAddMember());
 
         // Save group button

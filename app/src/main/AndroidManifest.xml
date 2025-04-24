@@ -46,7 +46,7 @@
 
         <!-- Écran d'accueil après connexion -->
         <activity
-            android:name=".HomeActivity"
+            android:name=".group.GroupsActivity"
             android:exported="false" />
 
         <!-- Gestion des groupes -->
@@ -56,7 +56,7 @@
 
         <!-- Liste des listes d'un groupe -->
         <activity
-            android:name=".product.ProductListActivity"
+            android:name=".product.ProductsActivity"
             android:exported="false" />
 
         <!-- Ajout d'une nouvelle liste -->

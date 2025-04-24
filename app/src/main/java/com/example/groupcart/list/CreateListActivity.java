@@ -15,7 +15,7 @@ import com.example.groupcart.utils.Prefs;
 import com.example.groupcart.R;
 import com.example.groupcart.product.ProductRecyclerViewAdapter;
 import com.example.groupcart.group.GroupModel;
-import com.example.groupcart.product.ProductListActivity;
+import com.example.groupcart.product.ProductsActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -49,7 +49,7 @@ public class CreateListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_list);
 
         // Récupérer le nom du groupe passé depuis ListActivity
-        groupName = getIntent().getStringExtra(ProductListActivity.EXTRA_GROUP);
+        groupName = getIntent().getStringExtra(ProductsActivity.EXTRA_GROUP);
 
         // Lier les vues
         listNameEditText = findViewById(R.id.etListName);

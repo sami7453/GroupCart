@@ -14,7 +14,7 @@
         android:layout_weight="1"
         android:text="@string/list_name_placeholder"
         android:textSize="18sp"
-        android:textColor="#1F5C63"/>
+        android:textColor="#1F5C63" />
 
     <!-- Delete list button -->
     <ImageButton
@@ -24,4 +24,5 @@
         android:src="@android:drawable/ic_menu_close_clear_cancel"
         android:background="@null"
         android:contentDescription="@string/delete_list" />
+
 </LinearLayout>

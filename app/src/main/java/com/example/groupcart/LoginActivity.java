@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.groupcart.group.GroupsActivity;
 import com.example.groupcart.utils.Prefs;
 
 public class LoginActivity extends AppCompatActivity {
@@ -37,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         String pass = passwordEditText.getText().toString().trim();
 
         if (Prefs.with(this).checkCredentials(user, pass)) {
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(new Intent(this, GroupsActivity.class));
             finish();
         } else {
             Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show();

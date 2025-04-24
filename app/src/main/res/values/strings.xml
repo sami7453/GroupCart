@@ -24,10 +24,12 @@
     <string name="title_home">Accueil</string>
 
     <!-- item_user -->
+    <string name="profile_picture">Profile picture</string>
     <string name="username_placeholder">Username placeholder</string>
     <string name="delete_user">Delete user</string>
 
     <!-- item_product -->
+    <string name="product_picture">Product picture</string>
     <string name="product_name_placeholder">Product name placeholder</string>
 
     <!-- item_list -->
@@ -35,8 +37,12 @@
     <string name="delete_list">Delete list</string>
 
     <!-- item_group -->
-    <string name="group_name">Group name placeholder</string>
+    <string name="group_name_placeholder">Group name placeholder</string>
+    <string name="group_members_placeholder">Member 1, Member 2, Member 3...</string>
     <string name="delete_group">Delete group</string>
+
+    <!-- activity_create_list -->
+    <string name="create_list">Create list</string>
 
     <!-- activity_register & activity_login -->
     <string name="username">Username</string>
@@ -53,8 +59,7 @@
 
     <!-- activity_groups -->
     <string name="back">Back</string>
-    <string name="add_group">Add a group</string>
-
+    <string name="create_group">Create group</string>
 
     <string name="text_or">OU</string>
     <string name="text_remember_me">Remember me</string>

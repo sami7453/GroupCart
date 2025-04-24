@@ -18,7 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductListActivity extends AppCompatActivity {
+public class ProductsActivity extends AppCompatActivity {
     public static final String EXTRA_GROUP = "groupName";
 
     private RecyclerView rvLists;
