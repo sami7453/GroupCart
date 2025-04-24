@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.groupcart.MemberAdapter;
 import com.example.groupcart.Prefs;
 import com.example.groupcart.R;
-import com.example.groupcart.user.User;
+import com.example.groupcart.user.UserModel;
+import com.example.groupcart.user.UserRecyclerViewAdapter;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -20,39 +21,35 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GroupActivity extends AppCompatActivity {
+/**
+ * View that allows the user to create a new group.
+ */
+public class NewGroupActivity extends AppCompatActivity {
     private TextInputEditText groupNameEditText;
     private EditText memberUsernameEditText;
     private MaterialButton addMemberButton, saveGroupButton;
-    private RecyclerView rvMembers;
-
+    private RecyclerView memberList;
     private List<String> memberUsernames = new ArrayList<>();
-    private MemberAdapter memberAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_group);
 
-        groupNameEditText = findViewById(R.id.etGroupName);
-        memberUsernameEditText = findViewById(R.id.etMemberUsername);
-        addMemberButton = findViewById(R.id.btnAddMember);
-        saveGroupButton = findViewById(R.id.btnSaveGroup);
-        rvMembers = findViewById(R.id.rvMembers);
+        groupNameEditText = findViewById(R.id.groupNameEditText);
+        memberUsernameEditText = findViewById(R.id.usernameEditText);
+        addMemberButton = findViewById(R.id.addMemberButton);
+        saveGroupButton = findViewById(R.id.saveButton);
+        memberList = findViewById(R.id.memberList);
 
         MaterialToolbar toolbar = findViewById(R.id.topAppBar);
         toolbar.setNavigationOnClickListener(v -> finish());
 
-        memberAdapter = new MemberAdapter(memberUsernames, username -> {
-            memberUsernames.remove(username);
-            memberAdapter.update(memberUsernames);
-        });
-
-        rvMembers.setLayoutManager(new LinearLayoutManager(this));
-        rvMembers.setAdapter(memberAdapter);
+        UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(this, ??);
+        memberList.setAdapter(adapter);
+        memberList.setLayoutManager(new LinearLayoutManager(this));
 
         addMemberButton.setOnClickListener(v -> onAddMember());
-        removeMemberButton.setOnClickListener(v -> onRemoveMember());
         saveGroupButton.setOnClickListener(v -> saveGroup());
     }
 
@@ -60,18 +57,18 @@ public class GroupActivity extends AppCompatActivity {
         String username = memberUsernameEditText.getText().toString().trim();
 
         if (TextUtils.isEmpty(username)) {
-            Toast.makeText(this, "Nom de membre vide", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Empty username", Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (memberUsernames.contains(username)) {
-            Toast.makeText(this, "Ce membre est déjà ajouté", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "User already in group", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        User user = getUserByUsername(username);
+        UserModel user = getUserByUsername(username);
         if (user == null) {
-            Toast.makeText(this, "Cet utilisateur n’existe pas", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "User doesn't exist", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -92,31 +89,31 @@ public class GroupActivity extends AppCompatActivity {
             return;
         }
 
-        List<User> allUsers = Prefs.with(this).loadUsers();
-        List<User> selectedMembers = new ArrayList<>();
+        List<UserModel> allUsers = Prefs.with(this).loadUsers();
+        List<UserModel> selectedMembers = new ArrayList<>();
 
         for (String username : memberUsernames) {
-            User user = getUserByUsername(username, allUsers);
+            UserModel user = getUserByUsername(username, allUsers);
             if (user != null) {
                 selectedMembers.add(user);
             }
         }
 
-        Group newGroup = new Group(groupName);
-        for (User member : selectedMembers) {
+        GroupModel newGroup = new GroupModel(groupName);
+        for (UserModel member : selectedMembers) {
             newGroup.addMember(member);
         }
 
         // Save group to global list
-        List<Group> allGroups = Prefs.with(this).loadGroups();
+        List<GroupModel> allGroups = Prefs.with(this).loadGroups();
         allGroups.add(newGroup);
         Prefs.with(this).saveGroups(allGroups);
 
         // Save group to each user's personal list
-        for (User member : selectedMembers) {
-            List<Group> userGroups = Prefs.with(this).loadGroupsForUser(member.getUsername());
+        for (UserModel member : selectedMembers) {
+            List<GroupModel> userGroups = Prefs.with(this).loadGroupsForUser(member.getUsername());
             boolean alreadyInGroup = false;
-            for (Group g : userGroups) {
+            for (GroupModel g : userGroups) {
                 if (g.getName().equals(groupName)) {
                     alreadyInGroup = true;
                     break;
@@ -133,12 +130,12 @@ public class GroupActivity extends AppCompatActivity {
         finish();
     }
 
-    private User getUserByUsername(String username) {
+    private UserModel getUserByUsername(String username) {
         return getUserByUsername(username, Prefs.with(this).loadUsers());
     }
 
-    private User getUserByUsername(String username, List<User> users) {
-        for (User user : users) {
+    private UserModel getUserByUsername(String username, List<UserModel> users) {
+        for (UserModel user : users) {
             if (user.getUsername().equals(username)) {
                 return user;
             }

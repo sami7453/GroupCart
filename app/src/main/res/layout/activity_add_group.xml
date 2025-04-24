@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/LimeWhite"
-    tools:context=".group.GroupActivity">
+    tools:context=".group.NewGroupActivity">
 
-    <!-- Top App Bar -->
+    <!-- Tob bar -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="0dp"
@@ -16,13 +16,13 @@
         android:background="@color/Blueprint"
         app:navigationIcon="@android:drawable/ic_menu_revert"
         android:contentDescription="@string/back"
-        app:title="Créer un groupe"
+        app:title="Create new group"
         app:titleTextColor="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Nom du groupe -->
+    <!-- Group name label -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilGroupName"
         android:layout_width="0dp"
@@ -36,15 +36,15 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etGroupName"
+            android:id="@+id/groupNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Saisie username + bouton Add -->
+    <!-- Username edit text -->
     <EditText
-        android:id="@+id/etMemberUsername"
+        android:id="@+id/usernameEditText"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:hint="@string/username_du_membre"
@@ -54,10 +54,11 @@
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/tilGroupName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnAddMember" />
+        app:layout_constraintEnd_toStartOf="@+id/addMemberButton" />
 
+    <!-- Add user button -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAddMember"
+        android:id="@+id/addMemberButton"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:text="@string/add"
@@ -67,25 +68,25 @@
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/tilGroupName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/etMemberUsername" />
+        app:layout_constraintStart_toEndOf="@id/usernameEditText" />
 
-    <!-- RecyclerView des membres ajoutés -->
+    <!-- Member list -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMembers"
+        android:id="@+id/memberList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:paddingStart="32dp"
         android:paddingEnd="32dp"
-        app:layout_constraintTop_toBottomOf="@id/etMemberUsername"
-        app:layout_constraintBottom_toTopOf="@+id/btnSaveGroup"
+        app:layout_constraintTop_toBottomOf="@id/usernameEditText"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/item_member" />
 
-    <!-- Bouton Save -->
+    <!-- Save button -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSaveGroup"
+        android:id="@+id/saveButton"
         android:layout_width="0dp"
         android:layout_height="52dp"
         android:text="@string/save"

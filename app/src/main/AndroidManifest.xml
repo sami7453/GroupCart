@@ -51,7 +51,7 @@
 
         <!-- Gestion des groupes -->
         <activity
-            android:name=".group.GroupActivity"
+            android:name=".group.NewGroupActivity"
             android:exported="false" />
 
         <!-- Liste des listes d'un groupe -->

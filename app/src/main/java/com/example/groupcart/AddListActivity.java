@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.groupcart.product.ProductAdapter;
-import com.example.groupcart.group.Group;
+import com.example.groupcart.product.ProductRecyclerViewAdapter;
+import com.example.groupcart.group.GroupModel;
 import com.example.groupcart.product.ProductListActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -37,7 +37,7 @@ public class AddListActivity extends AppCompatActivity {
 
     private List<String> items = new ArrayList<>();
     private ArrayAdapter<String>  suggestionAdapter;
-    private ProductAdapter itemsAdapter;
+    private ProductRecyclerViewAdapter itemsAdapter;
     private OkHttpClient client = new OkHttpClient();
     private String groupName;
 
@@ -73,7 +73,7 @@ public class AddListActivity extends AppCompatActivity {
         });
 
         // 2) RecyclerView des items ajoutés
-        itemsAdapter = new ProductAdapter(items);
+        itemsAdapter = new ProductRecyclerViewAdapter(items);
         rvItems.setLayoutManager(new LinearLayoutManager(this));
         rvItems.setAdapter(itemsAdapter);
 
@@ -135,8 +135,8 @@ public class AddListActivity extends AppCompatActivity {
         }
 
         Prefs prefs = Prefs.with(this);
-        List<Group> groups = prefs.loadGroups();  // groupes de l'utilisateur courant
-        for (Group g : groups) {
+        List<GroupModel> groups = prefs.loadGroups();  // groupes de l'utilisateur courant
+        for (GroupModel g : groups) {
             if (g.getName().equals(groupName)) {
                 g.getLists().add(
                         new ItemList(name, new ArrayList<>(items))

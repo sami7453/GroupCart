@@ -6,6 +6,7 @@
     android:orientation="horizontal"
     android:padding="12dp">
 
+    <!-- Username label -->
     <TextView
         android:id="@+id/tvMemberUsername"
         android:layout_width="0dp"
@@ -15,6 +16,7 @@
         android:textSize="16sp"
         android:textColor="#1F5C63" />
 
+    <!-- Remove button -->
     <ImageButton
         android:id="@+id/btnRemoveMember"
         android:layout_width="24dp"

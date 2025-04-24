@@ -47,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        boolean ok = Prefs.with(this).addUser(new User(u, p, e));
+        boolean ok = Prefs.with(this).addUser(new UserModel(u, p, e));
 
         if (!ok) {
             Toast.makeText(this, "Ce nom d’utilisateur existe déjà", Toast.LENGTH_SHORT).show();

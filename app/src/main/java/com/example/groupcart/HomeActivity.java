@@ -10,9 +10,9 @@ import androidx.appcompat.widget.Toolbar;  // ou MaterialToolbar si tu préfère
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.groupcart.group.Group;
-import com.example.groupcart.group.GroupActivity;
-import com.example.groupcart.group.GroupAdapter;
+import com.example.groupcart.group.GroupModel;
+import com.example.groupcart.group.NewGroupActivity;
+import com.example.groupcart.group.GroupRecyclerViewAdapter;
 import com.example.groupcart.user.LoginActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     private RecyclerView rvGroups;
-    private GroupAdapter groupAdapter;
+    private GroupRecyclerViewAdapter groupAdapter;
     private FloatingActionButton fabAddGroup;
 
     @Override
@@ -36,13 +36,13 @@ public class HomeActivity extends AppCompatActivity {
         // RecyclerView des groupes
         rvGroups = findViewById(R.id.recyclerViewGroups);
         rvGroups.setLayoutManager(new LinearLayoutManager(this));
-        groupAdapter = new GroupAdapter(Prefs.with(this).loadGroups());
+        groupAdapter = new GroupRecyclerViewAdapter(Prefs.with(this).loadGroups());
         rvGroups.setAdapter(groupAdapter);
 
         // FloatingActionButton pour créer un groupe
         fabAddGroup = findViewById(R.id.fabAddGroup);
         fabAddGroup.setOnClickListener(v ->
-                startActivity(new Intent(this, GroupActivity.class))
+                startActivity(new Intent(this, NewGroupActivity.class))
         );
     }
 
@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         // Recharge la liste des groupes après chaque retour
-        List<Group> groups = Prefs.with(this).loadGroups();
+        List<GroupModel> groups = Prefs.with(this).loadGroups();
         groupAdapter.update(groups);
     }
 

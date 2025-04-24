@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.groupcart.AddListActivity;
 import com.example.groupcart.Prefs;
 import com.example.groupcart.R;
-import com.example.groupcart.group.Group;
+import com.example.groupcart.group.GroupModel;
 import com.example.groupcart.list.ListAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -43,10 +43,10 @@ public class ProductListActivity extends AppCompatActivity {
         rvLists.setLayoutManager(new LinearLayoutManager(this));
 
         // 4) Charger les listes du groupe
-        List<Group> groups = Prefs.with(this)
+        List<GroupModel> groups = Prefs.with(this)
                 .loadGroupsForUser(Prefs.with(this).getCurrentUser());
-        Group myGroup = null;
-        for (Group g : groups) {
+        GroupModel myGroup = null;
+        for (GroupModel g : groups) {
             if (g.getName().equals(groupName)) {
                 myGroup = g;
                 break;
@@ -78,7 +78,7 @@ public class ProductListActivity extends AppCompatActivity {
                 .stream()
                 .filter(g -> g.getName().equals(groupName))
                 .findFirst()
-                .map(Group::getLists)
+                .map(GroupModel::getLists)
                 .orElse(new ArrayList<>());
         adapter.update(updated);
     }

@@ -3,8 +3,8 @@ package com.example.groupcart;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.groupcart.group.Group;
-import com.example.groupcart.user.User;
+import com.example.groupcart.group.GroupModel;
+import com.example.groupcart.user.UserModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -35,17 +35,17 @@ public class Prefs {
     // -------------------
 
     /** Charge tous les utilisateurs enregistrés */
-    public List<User> loadUsers() {
+    public List<UserModel> loadUsers() {
         String json = prefs.getString(KEY_USERS, null);
         if (json == null) {
             return new ArrayList<>();
         }
-        Type type = new TypeToken<List<User>>() {}.getType();
+        Type type = new TypeToken<List<UserModel>>() {}.getType();
         return gson.fromJson(json, type);
     }
 
     /** Sauvegarde la liste complète des utilisateurs */
-    public void saveUsers(List<User> users) {
+    public void saveUsers(List<UserModel> users) {
         String json = gson.toJson(users);
         prefs.edit()
                 .putString(KEY_USERS, json)
@@ -56,9 +56,9 @@ public class Prefs {
      * Ajoute un nouvel utilisateur si le username n'existe pas déjà.
      * @return true si ajouté, false si username déjà pris
      */
-    public boolean addUser(User u) {
-        List<User> users = loadUsers();
-        for (User x : users) {
+    public boolean addUser(UserModel u) {
+        List<UserModel> users = loadUsers();
+        for (UserModel x : users) {
             if (x.getUsername().equals(u.getUsername())) {
                 return false;
             }
@@ -73,7 +73,7 @@ public class Prefs {
      * @return true si authentifié
      */
     public boolean checkCredentials(String username, String password) {
-        for (User u : loadUsers()) {
+        for (UserModel u : loadUsers()) {
             if (u.getUsername().equals(username)
                     && u.getPassword().equals(password)) {
                 setCurrentUser(username);
@@ -115,12 +115,12 @@ public class Prefs {
      * Charge la liste de groupes d'un utilisateur arbitraire.
      * @param username le nom d'utilisateur cible
      */
-    public List<Group> loadGroupsForUser(String username) {
+    public List<GroupModel> loadGroupsForUser(String username) {
         String json = prefs.getString(keyGroupsFor(username), null);
         if (json == null) {
             return new ArrayList<>();
         }
-        Type type = new TypeToken<List<Group>>() {}.getType();
+        Type type = new TypeToken<List<GroupModel>>() {}.getType();
         return gson.fromJson(json, type);
     }
 
@@ -129,7 +129,7 @@ public class Prefs {
      * @param username le nom d'utilisateur cible
      * @param groups   liste de Group à stocker
      */
-    public void saveGroupsForUser(String username, List<Group> groups) {
+    public void saveGroupsForUser(String username, List<GroupModel> groups) {
         String json = gson.toJson(groups);
         prefs.edit()
                 .putString(keyGroupsFor(username), json)
@@ -139,7 +139,7 @@ public class Prefs {
     /**
      * Charge la liste de groupes de l'utilisateur courant.
      */
-    public List<Group> loadGroups() {
+    public List<GroupModel> loadGroups() {
         String me = getCurrentUser();
         if (me == null) {
             return new ArrayList<>();
@@ -150,7 +150,7 @@ public class Prefs {
     /**
      * Sauvegarde la liste de groupes de l'utilisateur courant.
      */
-    public void saveGroups(List<Group> groups) {
+    public void saveGroups(List<GroupModel> groups) {
         String me = getCurrentUser();
         if (me != null) {
             saveGroupsForUser(me, groups);
