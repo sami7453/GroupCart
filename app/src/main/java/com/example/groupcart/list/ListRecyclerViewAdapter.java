@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.groupcart.R;
-import com.example.groupcart.list.ListModel;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class ListRecyclerViewAdapter extends RecyclerView.Adapter<ListRecyclerVi
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.item_not_deletable, parent, false);
+        View view = inflater.inflate(R.layout.item_list, parent, false);
         return new ListViewHolder(view);
     }
 

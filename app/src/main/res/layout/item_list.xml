@@ -4,24 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="12dp">
+    android:padding="16dp">
 
-    <!-- Text view -->
+    <!-- List name text view -->
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/listNameTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/username"
-        android:textSize="16sp"
-        android:textColor="#1F5C63" />
+        android:text="@string/list_name_placeholder"
+        android:textSize="18sp"
+        android:textColor="#1F5C63"/>
 
-    <!-- Remove button -->
+    <!-- Delete list button -->
     <ImageButton
-        android:id="@+id/removeButton"
+        android:id="@+id/deleteListButton"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@android:drawable/ic_menu_close_clear_cancel"
         android:background="@null"
-        android:contentDescription="@string/remove_member" />
+        android:contentDescription="@string/delete_list" />
 </LinearLayout>

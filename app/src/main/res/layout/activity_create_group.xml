@@ -27,7 +27,7 @@
         android:id="@+id/tilGroupName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/nom_du_groupe"
+        android:hint="@string/group_name"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="24dp"
@@ -47,7 +47,7 @@
         android:id="@+id/usernameEditText"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:hint="@string/username_du_membre"
+        android:hint="@string/username"
         android:padding="12dp"
         android:background="@color/Fluffyball"
         android:layout_marginStart="32dp"
@@ -82,7 +82,7 @@
         app:layout_constraintBottom_toTopOf="@+id/saveButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_not_deletable" />
+        tools:listitem="@layout/item_list" />
 
     <!-- Save button -->
     <com.google.android.material.button.MaterialButton

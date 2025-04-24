@@ -47,7 +47,7 @@
         android:layout_height="52dp"
         android:layout_marginBottom="100dp"
         android:backgroundTint="@color/Blueprint"
-        android:text="@string/commencer"
+        android:text="@string/start_now"
         android:textColor="@color/Fluffyball"
         app:cornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"

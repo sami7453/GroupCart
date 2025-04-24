@@ -26,7 +26,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.item_deletable, parent, false);
+        View view = inflater.inflate(R.layout.item_group, parent, false);
         return new UserViewHolder(view);
     }
 
