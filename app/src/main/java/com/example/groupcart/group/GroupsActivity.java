@@ -2,6 +2,8 @@ package com.example.groupcart.group;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,29 +12,81 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.groupcart.R;
+import com.example.groupcart.LoginActivity;
+import com.example.groupcart.group.GroupModel;
+import com.example.groupcart.group.GroupRecyclerViewAdapter;
+import com.example.groupcart.utils.Prefs;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GroupsActivity extends AppCompatActivity {
+    private RecyclerView groupRecyclerView;
+    private GroupRecyclerViewAdapter adapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups);
 
-        // Top bar
+        // Barre supérieure sans bouton retour
         Toolbar topBar = findViewById(R.id.topBar);
-        topBar.setTitle("GroupCart");
-        topBar.setOnMenuItemClickListener(this::onOptionsItemSelected);
+        setSupportActionBar(topBar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("GroupCart");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
 
-        // Group recycler view
-        RecyclerView groupRecyclerView = findViewById(R.id.groupRecyclerView);
-        GroupRecyclerViewAdapter adapter = new GroupRecyclerViewAdapter(this, ??);
-        groupRecyclerView.setAdapter(adapter);
+        // Initialisation du RecyclerView
+        groupRecyclerView = findViewById(R.id.groupRecyclerView);
         groupRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Create group button
+        // Charger les groupes de l'utilisateur
+        List<GroupModel> groups = Prefs.with(this)
+                .loadGroupsForUser(Prefs.with(this).getCurrentUser());
+        if (groups == null) {
+            groups = new ArrayList<>();
+        }
+        adapter = new GroupRecyclerViewAdapter(this, groups);
+        groupRecyclerView.setAdapter(adapter);
+
+        // Bouton pour créer un nouveau groupe
         FloatingActionButton createGroupButton = findViewById(R.id.createGroupButton);
         createGroupButton.setOnClickListener(v ->
-            startActivity(new Intent(this, CreateGroupActivity.class))
+                startActivity(new Intent(this, CreateGroupActivity.class))
         );
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.top_app_bar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_logout) {
+            // Déconnexion complète
+            Prefs.with(this).clearCurrentUser();
+            Intent i = new Intent(this, LoginActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Recharger la liste des groupes et rafraîchir l'adaptateur
+        List<GroupModel> groups = Prefs.with(this)
+                .loadGroupsForUser(Prefs.with(this).getCurrentUser());
+        if (groups == null) {
+            groups = new ArrayList<>();
+        }
+        adapter = new GroupRecyclerViewAdapter(this, groups);
+        groupRecyclerView.setAdapter(adapter);
     }
 }

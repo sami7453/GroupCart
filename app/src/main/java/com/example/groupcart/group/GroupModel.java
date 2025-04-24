@@ -26,6 +26,9 @@ public class GroupModel {
     }
 
     public List<ListModel> getLists() {
+        if (lists == null) {
+            lists = new ArrayList<>();
+        }
         return lists;
     }
 }

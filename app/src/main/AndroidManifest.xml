@@ -72,7 +72,7 @@
 
         <!-- Détail d'un produit scanné -->
         <activity
-            android:name=".list.DetailListActivity"
+            android:name=".list.ListsActivity"
             android:exported="false" />
 
     </application>

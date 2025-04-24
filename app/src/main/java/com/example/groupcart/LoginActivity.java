@@ -22,15 +22,15 @@ public class LoginActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
 
-        // Register button
-        Button loginButton = findViewById(R.id.registerButton);
+        // Bouton de connexion
+        Button loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(v -> onAttemptLogin());
 
-        // Login button
-        Button registerButton = findViewById(R.id.loginButton);
-        registerButton.setOnClickListener(v ->
-            startActivity(new Intent(this, RegisterActivity.class))
-        );
+        // Bouton d'inscription
+        Button registerButton = findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(v -> {
+            startActivity(new Intent(this, RegisterActivity.class));
+        });
     }
 
     private void onAttemptLogin() {
@@ -38,10 +38,11 @@ public class LoginActivity extends AppCompatActivity {
         String pass = passwordEditText.getText().toString().trim();
 
         if (Prefs.with(this).checkCredentials(user, pass)) {
+            // Redirection vers l'écran d'accueil (GroupsActivity)
             startActivity(new Intent(this, GroupsActivity.class));
             finish();
         } else {
-            Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Identifiants incorrects", Toast.LENGTH_SHORT).show();
         }
     }
 }

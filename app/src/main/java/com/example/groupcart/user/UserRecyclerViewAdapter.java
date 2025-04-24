@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,8 +26,8 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.item_user, parent, false);
+        View view = LayoutInflater.from(context)
+                .inflate(R.layout.item_user, parent, false);
         return new UserViewHolder(view);
     }
 
@@ -34,6 +35,10 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         UserModel user = users.get(position);
         holder.usernameTextView.setText(user.getUsername());
+        holder.deleteUserButton.setOnClickListener(v -> {
+            users.remove(position);
+            notifyItemRemoved(position);
+        });
     }
 
     @Override
@@ -42,11 +47,13 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
     }
 
     static class UserViewHolder extends RecyclerView.ViewHolder {
-        TextView usernameTextView;
+        TextView    usernameTextView;
+        ImageButton deleteUserButton;
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
-            usernameTextView = itemView.findViewById(R.id.usernameTextView);
+            usernameTextView  = itemView.findViewById(R.id.usernameTextView);
+            deleteUserButton  = itemView.findViewById(R.id.deleteUserButton);
         }
     }
 }
