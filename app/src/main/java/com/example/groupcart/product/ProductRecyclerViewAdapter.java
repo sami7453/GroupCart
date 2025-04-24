@@ -26,14 +26,14 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.item_group, parent, false);
+        View view = inflater.inflate(R.layout.item_not_deletable, parent, false);
         return new ProductViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         ProductModel product = products.get(position);
-        holder.productNameText.setText(product.getName());
+        holder.productNameTextView.setText(product.getName());
     }
 
     @Override
@@ -42,11 +42,11 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
     }
 
     static class ProductViewHolder extends RecyclerView.ViewHolder {
-        TextView productNameText;
+        TextView productNameTextView;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
-            productNameText = itemView.findViewById(R.id.tvItemName);
+            productNameTextView = itemView.findViewById(R.id.textView);
         }
     }
 }

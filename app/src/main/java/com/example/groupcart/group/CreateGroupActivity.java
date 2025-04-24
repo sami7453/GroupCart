@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.groupcart.MemberAdapter;
 import com.example.groupcart.Prefs;
 import com.example.groupcart.R;
 import com.example.groupcart.user.UserModel;
@@ -21,10 +20,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * View that allows the user to create a new group.
- */
-public class NewGroupActivity extends AppCompatActivity {
+public class CreateGroupActivity extends AppCompatActivity {
     private TextInputEditText groupNameEditText;
     private EditText memberUsernameEditText;
     private MaterialButton addMemberButton, saveGroupButton;
@@ -34,7 +30,7 @@ public class NewGroupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_group);
+        setContentView(R.layout.activity_create_group);
 
         groupNameEditText = findViewById(R.id.groupNameEditText);
         memberUsernameEditText = findViewById(R.id.usernameEditText);

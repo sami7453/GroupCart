@@ -14,7 +14,6 @@ import com.example.groupcart.R;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText usernameEditText, passwordEditText;
-    private Button loginButton, signupButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,17 +22,19 @@ public class LoginActivity extends AppCompatActivity {
 
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
-        signupButton = findViewById(R.id.signupButton);
-        loginButton = findViewById(R.id.loginButton);
 
-        signupButton.setOnClickListener(v ->
+        // Register button
+        Button loginButton = findViewById(R.id.registerButton);
+        loginButton.setOnClickListener(v -> onAttemptLogin());
+
+        // Login button
+        Button registerButton = findViewById(R.id.loginButton);
+        registerButton.setOnClickListener(v ->
             startActivity(new Intent(this, RegisterActivity.class))
         );
-
-        loginButton.setOnClickListener(v -> attemptLogin());
     }
 
-    private void attemptLogin() {
+    private void onAttemptLogin() {
         String user = usernameEditText.getText().toString().trim();
         String pass = passwordEditText.getText().toString().trim();
 
@@ -41,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(this, HomeActivity.class));
             finish();
         } else {
-            Toast.makeText(this, "Identifiants incorrects", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show();
         }
     }
 }

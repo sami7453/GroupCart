@@ -28,7 +28,7 @@ public class ProductListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+        setContentView(R.layout.activity_lists);
 
         // 1) Récupérer le nom du groupe **avant** d'utiliser toolbar.setTitle(...)
         groupName = getIntent().getStringExtra(EXTRA_GROUP);

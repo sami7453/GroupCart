@@ -14,7 +14,7 @@ import com.example.groupcart.R;
 import java.util.List;
 
 public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerViewAdapter.UserViewHolder> {
-    Context context;
+    private Context context;
     private List<UserModel> users;
 
     public UserRecyclerViewAdapter(Context context, List<UserModel> users) {
@@ -26,14 +26,14 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.item_group, parent, false);
+        View view = inflater.inflate(R.layout.item_deletable, parent, false);
         return new UserViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         UserModel user = users.get(position);
-        holder.usernameText.setText(user.getUsername());
+        holder.usernameTextView.setText(user.getUsername());
     }
 
     @Override
@@ -42,11 +42,11 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
     }
 
     static class UserViewHolder extends RecyclerView.ViewHolder {
-        TextView usernameText;
+        TextView usernameTextView;
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
-            usernameText = itemView.findViewById(R.id.textViewGroupName);
+            usernameTextView = itemView.findViewById(R.id.textView);
         }
     }
 }

@@ -8,20 +8,22 @@
     android:background="@color/LimeWhite"
     tools:context=".MainActivity">
 
+    <!-- Logo image view -->
     <ImageView
-        android:id="@+id/logoImage"
+        android:id="@+id/logoImageView"
         android:layout_width="253dp"
         android:layout_height="331dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/tagline"
+        app:layout_constraintBottom_toTopOf="@+id/catchPhraseTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Catch phrase text view -->
     <TextView
-        android:id="@+id/tagline"
+        android:id="@+id/catchPhraseTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -36,8 +38,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoImage" />
+        app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
 
+    <!-- Start button -->
     <Button
         android:id="@+id/startButton"
         android:layout_width="218dp"

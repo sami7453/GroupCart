@@ -44,7 +44,7 @@ public class AddListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_list);
+        setContentView(R.layout.activity_create_list);
 
         // Récupérer le nom du groupe passé depuis ListActivity
         groupName = getIntent().getStringExtra(ProductListActivity.EXTRA_GROUP);
