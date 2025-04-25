@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.groupcart.R;
 import com.example.groupcart.group.GroupModel;
+import com.example.groupcart.group.GroupsActivity;
 import com.example.groupcart.product.ProductsActivity;
 import com.example.groupcart.user.UserModel;
 import com.example.groupcart.utils.Prefs;
@@ -49,6 +51,24 @@ public class ListRecyclerViewAdapter extends RecyclerView.Adapter<ListRecyclerVi
             Intent intent = new Intent(context, ProductsActivity.class);
             intent.putExtra(ProductsActivity.EXTRA_LIST_NAME, list.getName());
             context.startActivity(intent);
+        });
+
+        holder.listNameTextView.setOnClickListener(v -> {
+            EditText editText = new EditText(context);
+            editText.setText(holder.listNameTextView.getText());
+
+            androidx.appcompat.app.AlertDialog dialog = new androidx.appcompat.app.AlertDialog.Builder(context)
+                    .setTitle("Edit Text")
+                    .setView(editText)
+                    .setPositiveButton("OK", (dialogInterface, i) -> {
+                        String newText = editText.getText().toString();
+                        holder.listNameTextView.setText(newText);
+                        // Prefs.with(context).saveGroups(lists);
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .create();
+
+            dialog.show();
         });
 
         holder.deleteListButton.setOnClickListener(v -> {

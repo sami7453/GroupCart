@@ -9,7 +9,7 @@
     <!-- item_product -->
     <string name="product_picture">Product picture</string>
     <string name="product_name_placeholder">Product name placeholder</string>
-    <string name="product_price_placeholder">Product price placeholder</string>
+    <string name="product_price_placeholder"></string>
 
     <!-- item_list -->
     <string name="list_name_placeholder">List name placeholder</string>

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -49,6 +50,24 @@ public class GroupRecyclerViewAdapter extends RecyclerView.Adapter<GroupRecycler
             Intent intent = new Intent(context, ListsActivity.class);
             intent.putExtra(ListsActivity.EXTRA_GROUP_NAME, group.getName());
             context.startActivity(intent);
+        });
+
+        holder.groupNameTextView.setOnClickListener(v -> {
+            EditText editText = new EditText(context);
+            editText.setText(holder.groupNameTextView.getText());
+
+            androidx.appcompat.app.AlertDialog dialog = new androidx.appcompat.app.AlertDialog.Builder(context)
+                    .setTitle("Edit Text")
+                    .setView(editText)
+                    .setPositiveButton("OK", (dialogInterface, i) -> {
+                        String newText = editText.getText().toString();
+                        holder.groupNameTextView.setText(newText);
+                        Prefs.with(context).saveGroups(groups);
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .create();
+
+            dialog.show();
         });
 
         holder.deleteGroupButton.setOnClickListener(v -> {
