@@ -23,6 +23,10 @@
 
     <!-- activity_create_list -->
     <string name="create_list">Create list</string>
+    <string name="product_name">Product name</string>
+
+    <!-- activity_create_group -->
+    <string name="enter_group_name">Enter group name...</string>
 
     <!-- activity_register & activity_login -->
     <string name="username">Username</string>

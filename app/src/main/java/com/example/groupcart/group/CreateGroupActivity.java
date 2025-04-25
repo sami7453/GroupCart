@@ -22,7 +22,7 @@ import java.util.List;
 
 public class CreateGroupActivity extends AppCompatActivity {
     private TextInputEditText groupNameEditText;
-    private EditText  usernameEditText;
+    private EditText usernameEditText;
     private List<UserModel> memberUsers = new ArrayList<>();
     private UserRecyclerViewAdapter adapter;
 

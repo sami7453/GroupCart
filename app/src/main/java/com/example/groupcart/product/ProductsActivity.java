@@ -22,8 +22,7 @@ import java.util.List;
 
 public class ProductsActivity extends AppCompatActivity {
     public static final String EXTRA_GROUP = "groupName";
-
-    private RecyclerView rvLists;
+    private RecyclerView listRecyclerView;
     private ListRecyclerViewAdapter adapter;
     private String groupName;
 
@@ -32,24 +31,23 @@ public class ProductsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lists);
 
-        // Récupérer le nom du groupe
         groupName = getIntent().getStringExtra(EXTRA_GROUP);
 
-        // Toolbar
+        // Top bar
         Toolbar toolbar = findViewById(R.id.topBar);
-        toolbar.setTitle("Listes de " + groupName);
+        toolbar.setTitle("Lists of " + groupName);
         toolbar.setNavigationOnClickListener(v -> finish());
 
-        // RecyclerView
-        rvLists = findViewById(R.id.listRecyclerView);
-        rvLists.setLayoutManager(new LinearLayoutManager(this));
+        // List recycler view
+        listRecyclerView = findViewById(R.id.listRecyclerView);
+        listRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // FAB pour créer une liste
+        // Create list button
         FloatingActionButton fab = findViewById(R.id.createListButton);
         fab.setOnClickListener(v -> {
-            Intent i = new Intent(this, CreateListActivity.class);
-            i.putExtra(EXTRA_GROUP, groupName);
-            startActivity(i);
+            Intent intent = new Intent(this, CreateListActivity.class);
+            intent.putExtra(EXTRA_GROUP, groupName);
+            startActivity(intent);
         });
 
         loadAndDisplayLists();
@@ -62,12 +60,11 @@ public class ProductsActivity extends AppCompatActivity {
     }
 
     private void loadAndDisplayLists() {
-        List<GroupModel> groups = Prefs.with(this)
-                .loadGroupsForUser(Prefs.with(this).getCurrentUser());
+        List<GroupModel> groups = Prefs.with(this).loadGroupsForUser(Prefs.with(this).getCurrentUser());
         GroupModel myGroup = null;
-        for (GroupModel g : groups) {
-            if (g.getName().equals(groupName)) {
-                myGroup = g;
+        for (GroupModel group : groups) {
+            if (group.getName().equals(groupName)) {
+                myGroup = group;
                 break;
             }
         }
@@ -75,16 +72,7 @@ public class ProductsActivity extends AppCompatActivity {
                 ? myGroup.getLists()
                 : new ArrayList<>();
 
-        if (adapter == null) {
-            adapter = new ListRecyclerViewAdapter(
-                    this, groupName, lists
-            );
-            rvLists.setAdapter(adapter);
-        } else {
-            adapter = new ListRecyclerViewAdapter(
-                    this, groupName, lists
-            );
-            rvLists.setAdapter(adapter);
-        }
+        adapter = new ListRecyclerViewAdapter(this, groupName, lists);
+        listRecyclerView.setAdapter(adapter);
     }
 }

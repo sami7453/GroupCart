@@ -11,9 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.groupcart.R;
 import com.example.groupcart.group.GroupModel;
-import com.example.groupcart.list.ListModel;
-import com.example.groupcart.list.ListRecyclerViewAdapter;
-import com.example.groupcart.list.CreateListActivity;
 import com.example.groupcart.utils.Prefs;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -22,7 +19,6 @@ import java.util.List;
 
 public class ListsActivity extends AppCompatActivity {
     public static final String EXTRA_GROUP = "groupName";
-
     private String groupName;
     private RecyclerView listRecyclerView;
     private ListRecyclerViewAdapter adapter;
@@ -32,19 +28,18 @@ public class ListsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lists);
 
-        // Récupérer le nom du groupe
         groupName = getIntent().getStringExtra(EXTRA_GROUP);
 
-        // Barre supérieure
+        // Top bar
         Toolbar topBar = findViewById(R.id.topBar);
-        topBar.setTitle("Listes de " + groupName);
+        topBar.setTitle("Lists of " + groupName);
         topBar.setNavigationOnClickListener(v -> finish());
 
-        // Initialisation du RecyclerView
+        // List recycler view
         listRecyclerView = findViewById(R.id.listRecyclerView);
         listRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Bouton de création de liste
+        // Create list button
         FloatingActionButton fab = findViewById(R.id.createListButton);
         fab.setOnClickListener(v -> {
             Intent intent = new Intent(this, CreateListActivity.class);
@@ -52,7 +47,6 @@ public class ListsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Affichage initial
         loadAndDisplayLists();
     }
 
@@ -63,13 +57,11 @@ public class ListsActivity extends AppCompatActivity {
     }
 
     private void loadAndDisplayLists() {
-        // Charger les listes du groupe depuis les prefs
-        List<GroupModel> groups = Prefs.with(this)
-                .loadGroupsForUser(Prefs.with(this).getCurrentUser());
+        List<GroupModel> groups = Prefs.with(this).loadGroupsForUser(Prefs.with(this).getCurrentUser());
         GroupModel myGroup = null;
-        for (GroupModel g : groups) {
-            if (g.getName().equals(groupName)) {
-                myGroup = g;
+        for (GroupModel group : groups) {
+            if (group.getName().equals(groupName)) {
+                myGroup = group;
                 break;
             }
         }
@@ -77,7 +69,6 @@ public class ListsActivity extends AppCompatActivity {
                 ? myGroup.getLists()
                 : new ArrayList<>();
 
-        // Initialiser ou mettre à jour l'adaptateur
         if (adapter == null) {
             adapter = new ListRecyclerViewAdapter(this, groupName, lists);
             listRecyclerView.setAdapter(adapter);

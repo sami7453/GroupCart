@@ -43,7 +43,7 @@ public class ListRecyclerViewAdapter
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         ListModel list = lists.get(position);
         holder.listNameTextView.setText(list.getName());
-        holder.productCountTextView.setText(String.valueOf(list.getProducts().size()));
+        holder.productCountTextView.setText(list.getProducts().size() + " products");
 
         holder.deleteListButton.setOnClickListener(v -> {
             new AlertDialog.Builder(context)

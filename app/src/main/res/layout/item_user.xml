@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/username_placeholder"
-        android:textColor="#1F5C63"
+        android:textColor="@color/Blue"
         android:textSize="18sp" />
 
     <!-- Delete user button -->

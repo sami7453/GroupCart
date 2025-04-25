@@ -34,6 +34,7 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         ProductModel product = products.get(position);
         holder.productNameTextView.setText(product.getName());
+        holder.productNameTextView.setText(product.getPrice());
     }
 
     @Override
@@ -42,11 +43,12 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
     }
 
     static class ProductViewHolder extends RecyclerView.ViewHolder {
-        TextView productNameTextView;
+        TextView productNameTextView, productPriceTextView;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
             productNameTextView = itemView.findViewById(R.id.productNameTextView);
+            productPriceTextView = itemView.findViewById(R.id.productPriceTextView);
         }
     }
 }

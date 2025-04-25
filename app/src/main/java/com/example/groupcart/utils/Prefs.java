@@ -15,9 +15,8 @@ import java.util.List;
 public class Prefs {
     private static final String SHARED_PREFS = "app_prefs";
     private static final String KEY_USERS = "key_users";           // JSON List<User>
-    private static final String KEY_CURRENT_USER  = "key_current_user";    // username
+    private static final String KEY_CURRENT_USER = "key_current_user";    // username
     private static final String KEY_GROUPS_PREFIX = "key_groups_";         // suffixe + username
-
     private SharedPreferences prefs;
     private Gson gson = new Gson();
 

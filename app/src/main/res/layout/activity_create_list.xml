@@ -48,7 +48,7 @@
         android:id="@+id/acvProduct"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:hint="Product name"
+        android:hint="@string/product_name"
         android:padding="12dp"
         android:background="@color/Fluffyball"
         android:layout_marginStart="32dp"
