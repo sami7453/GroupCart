@@ -32,8 +32,8 @@ public class GroupRecyclerViewAdapter extends RecyclerView.Adapter<GroupRecycler
     @NonNull
     @Override
     public GroupViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context)
-                .inflate(R.layout.item_group, parent, false);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.item_group, parent, false);
         return new GroupViewHolder(view);
     }
 
@@ -105,15 +105,15 @@ public class GroupRecyclerViewAdapter extends RecyclerView.Adapter<GroupRecycler
     }
 
     static class GroupViewHolder extends RecyclerView.ViewHolder {
-        TextView    groupNameTextView;
-        TextView    groupMembersTextView;
+        TextView groupNameTextView;
+        TextView groupMembersTextView;
         ImageButton deleteGroupButton;
 
         public GroupViewHolder(@NonNull View itemView) {
             super(itemView);
-            groupNameTextView    = itemView.findViewById(R.id.groupNameTextView);
+            groupNameTextView = itemView.findViewById(R.id.groupNameTextView);
             groupMembersTextView = itemView.findViewById(R.id.groupMembersTextView);
-            deleteGroupButton    = itemView.findViewById(R.id.deleteGroupButton);
+            deleteGroupButton = itemView.findViewById(R.id.deleteGroupButton);
         }
     }
 }

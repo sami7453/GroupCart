@@ -50,6 +50,6 @@
         android:layout_height="24dp"
         android:background="@null"
         android:contentDescription="@string/delete"
-        android:src="@android:drawable/ic_menu_close_clear_cancel" /> <!-- Ajout d'une marge pour l'espacement -->
+        android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
 </LinearLayout>

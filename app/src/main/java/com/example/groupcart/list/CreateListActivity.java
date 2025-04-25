@@ -56,19 +56,19 @@ public class CreateListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_list);
 
-        // Toolbar
+        // Topbar
         MaterialToolbar toolbar = findViewById(R.id.topBar);
-        toolbar.setTitle("Créer une liste");
+        toolbar.setTitle("Create a list");
         toolbar.setNavigationOnClickListener(v -> finish());
 
         // Récupérer le nom du groupe
         groupName = getIntent().getStringExtra(ProductsActivity.EXTRA_GROUP);
 
         // Initialisation des vues
-        listNameEditText  = findViewById(R.id.etListName);
-        acvProduct        = findViewById(R.id.acvProduct);
-        addItemButton     = findViewById(R.id.addProductButton);
-        saveListButton    = findViewById(R.id.saveListButton);
+        listNameEditText = findViewById(R.id.etListName);
+        acvProduct = findViewById(R.id.acvProduct);
+        addItemButton = findViewById(R.id.addProductButton);
+        saveListButton = findViewById(R.id.saveListButton);
         itemsRecyclerView = findViewById(R.id.productRecyclerView);
 
         // Suggestion adapter pour AutoCompleteTextView
@@ -87,7 +87,7 @@ public class CreateListActivity extends AppCompatActivity {
             @Override public void afterTextChanged(Editable s) {}
         });
 
-        // RecyclerView des items
+        // Product
         itemsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         itemsAdapter = new ItemsAdapter(items);
         itemsRecyclerView.setAdapter(itemsAdapter);

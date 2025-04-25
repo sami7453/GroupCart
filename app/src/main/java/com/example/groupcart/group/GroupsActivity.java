@@ -30,7 +30,7 @@ public class GroupsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups);
 
-        // Barre supérieure sans bouton retour
+        // Top bar
         Toolbar topBar = findViewById(R.id.topBar);
         setSupportActionBar(topBar);
         if (getSupportActionBar() != null) {
@@ -38,23 +38,21 @@ public class GroupsActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         }
 
-        // Initialisation du RecyclerView
+        // Group recycler view
         groupRecyclerView = findViewById(R.id.groupRecyclerView);
         groupRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Charger les groupes de l'utilisateur
-        List<GroupModel> groups = Prefs.with(this)
-                .loadGroupsForUser(Prefs.with(this).getCurrentUser());
+        List<GroupModel> groups = Prefs.with(this).loadGroupsForUser(Prefs.with(this).getCurrentUser());
         if (groups == null) {
             groups = new ArrayList<>();
         }
         adapter = new GroupRecyclerViewAdapter(this, groups);
         groupRecyclerView.setAdapter(adapter);
 
-        // Bouton pour créer un nouveau groupe
+        // Create group button
         FloatingActionButton createGroupButton = findViewById(R.id.createGroupButton);
         createGroupButton.setOnClickListener(v ->
-                startActivity(new Intent(this, CreateGroupActivity.class))
+            startActivity(new Intent(this, CreateGroupActivity.class))
         );
     }
 
@@ -67,11 +65,10 @@ public class GroupsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_logout) {
-            // Déconnexion complète
             Prefs.with(this).clearCurrentUser();
-            Intent i = new Intent(this, LoginActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -80,9 +77,7 @@ public class GroupsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Recharger la liste des groupes et rafraîchir l'adaptateur
-        List<GroupModel> groups = Prefs.with(this)
-                .loadGroupsForUser(Prefs.with(this).getCurrentUser());
+        List<GroupModel> groups = Prefs.with(this).loadGroupsForUser(Prefs.with(this).getCurrentUser());
         if (groups == null) {
             groups = new ArrayList<>();
         }

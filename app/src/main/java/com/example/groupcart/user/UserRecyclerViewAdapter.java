@@ -26,8 +26,8 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context)
-                .inflate(R.layout.item_user, parent, false);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.item_user, parent, false);
         return new UserViewHolder(view);
     }
 
@@ -47,13 +47,13 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
     }
 
     static class UserViewHolder extends RecyclerView.ViewHolder {
-        TextView    usernameTextView;
+        TextView usernameTextView;
         ImageButton deleteUserButton;
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
-            usernameTextView  = itemView.findViewById(R.id.usernameTextView);
-            deleteUserButton  = itemView.findViewById(R.id.deleteUserButton);
+            usernameTextView = itemView.findViewById(R.id.usernameTextView);
+            deleteUserButton = itemView.findViewById(R.id.deleteUserButton);
         }
     }
 }

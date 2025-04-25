@@ -26,38 +26,24 @@ public class ListRecyclerViewAdapter
     private String groupName;
     private List<ListModel> lists;
 
-    public ListRecyclerViewAdapter(
-            Context context,
-            String groupName,
-            List<ListModel> lists
-    ) {
-        this.context   = context;
+    public ListRecyclerViewAdapter(Context context, String groupName, List<ListModel> lists) {
+        this.context = context;
         this.groupName = groupName;
-        this.lists     = lists;
+        this.lists = lists;
     }
 
     @NonNull @Override
-    public ListViewHolder onCreateViewHolder(
-            @NonNull ViewGroup parent,
-            int viewType
-    ) {
-        View view = LayoutInflater.from(context)
-                .inflate(R.layout.item_list, parent, false);
+    public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.item_list, parent, false);
         return new ListViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(
-            @NonNull ListViewHolder holder,
-            int position
-    ) {
+    public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         ListModel list = lists.get(position);
-        holder.listNameTextView
-                .setText(list.getName());
-        holder.productCountTextView
-                .setText(String.valueOf(
-                        list.getProducts().size()
-                ));
+        holder.listNameTextView.setText(list.getName());
+        holder.productCountTextView.setText(String.valueOf(list.getProducts().size()));
 
         holder.deleteListButton.setOnClickListener(v -> {
             new AlertDialog.Builder(context)
@@ -129,7 +115,6 @@ public class ListRecyclerViewAdapter
         return lists.size();
     }
 
-    /** Permet de mettre à jour le dataset sans recréer l'adaptateur */
     public void updateData(List<ListModel> newLists) {
         this.lists = newLists;
         notifyDataSetChanged();
@@ -141,12 +126,9 @@ public class ListRecyclerViewAdapter
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
-            listNameTextView      =
-                    itemView.findViewById(R.id.listNameTextView);
-            productCountTextView  =
-                    itemView.findViewById(R.id.productCountTextView);
-            deleteListButton      =
-                    itemView.findViewById(R.id.deleteListButton);
+            listNameTextView = itemView.findViewById(R.id.listNameTextView);
+            productCountTextView = itemView.findViewById(R.id.productCountTextView);
+            deleteListButton = itemView.findViewById(R.id.deleteListButton);
         }
     }
 }
