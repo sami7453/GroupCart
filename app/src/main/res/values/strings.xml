@@ -56,4 +56,6 @@
     <string name="home">Home</string>
     <string name="enter_list_name">Enter list name...</string>
     <string name="delete">Delete product</string>
+    <string name="status_to_buy">status to buy</string>
+    <string name="edit">Edit</string>
 </resources>

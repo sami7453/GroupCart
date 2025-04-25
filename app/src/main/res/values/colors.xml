@@ -7,4 +7,9 @@
     <color name="Fluffyball">#F9F7F6</color>
     <color name="Blue">#1F5C63</color>
     <color name="LightBlue">#888888</color>
+
+    <!-- Couleurs pour les statuts -->
+    <color name="status_to_buy_color">#FF5722</color>
+    <color name="status_in_progress_color">#FFC107</color>
+    <color name="status_bought_color">#4CAF50</color>
 </resources>
