@@ -9,7 +9,7 @@
 
     <!-- Product picture image view -->
     <ImageView
-        android:id="@+id/productPicureImageView"
+        android:id="@+id/productPictureImageView"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginEnd="12dp"

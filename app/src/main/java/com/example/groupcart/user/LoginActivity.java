@@ -1,4 +1,4 @@
-package com.example.groupcart;
+package com.example.groupcart.user;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.groupcart.R;
 import com.example.groupcart.group.GroupsActivity;
 import com.example.groupcart.utils.Prefs;
 

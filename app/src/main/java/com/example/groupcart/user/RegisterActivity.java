@@ -1,4 +1,4 @@
-package com.example.groupcart;
+package com.example.groupcart.user;
 
 import android.os.Bundle;
 import android.util.Patterns;
@@ -7,15 +7,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.groupcart.user.UserModel;
+import com.example.groupcart.R;
 import com.example.groupcart.utils.Prefs;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText usernameEditText, emailEditText, passwordEditText;
 
     @Override
-    protected void onCreate(Bundle s) {
-        super.onCreate(s);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
         usernameEditText = findViewById(R.id.usernameEditText);

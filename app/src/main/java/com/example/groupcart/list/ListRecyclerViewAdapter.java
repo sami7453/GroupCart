@@ -3,6 +3,7 @@ package com.example.groupcart.list;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.groupcart.R;
 import com.example.groupcart.group.GroupModel;
+import com.example.groupcart.product.ProductsActivity;
 import com.example.groupcart.user.UserModel;
 import com.example.groupcart.utils.Prefs;
 
@@ -43,10 +45,16 @@ public class ListRecyclerViewAdapter extends RecyclerView.Adapter<ListRecyclerVi
         holder.listNameTextView.setText(list.getName());
         holder.productCountTextView.setText(list.getProducts().size() + " products");
 
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ProductsActivity.class);
+            intent.putExtra(ProductsActivity.EXTRA_LIST_NAME, list.getName());
+            context.startActivity(intent);
+        });
+
         holder.deleteListButton.setOnClickListener(v -> {
             new AlertDialog.Builder(context)
                     .setTitle("Delete list")
-                    .setMessage("Are you sure you want to delete list '" + list.getName() + "' ?")
+                    .setMessage("Are you sure you want to delete list '" + list.getName() + "'?")
                     .setPositiveButton("Yes", (dialog, which) -> {
                         Prefs prefs = Prefs.with(context);
                         String me = prefs.getCurrentUser();

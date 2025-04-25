@@ -34,13 +34,13 @@
 
         <!-- Connexion -->
         <activity
-            android:name=".LoginActivity"
+            android:name=".user.LoginActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:exported="false" />
 
         <!-- Inscription -->
         <activity
-            android:name=".RegisterActivity"
+            android:name=".user.RegisterActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:exported="false" />
 

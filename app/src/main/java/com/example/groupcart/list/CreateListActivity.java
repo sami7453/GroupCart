@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,7 +51,7 @@ public class CreateListActivity extends AppCompatActivity {
     private OkHttpClient client = new OkHttpClient();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_list);
 
@@ -60,7 +61,7 @@ public class CreateListActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(v -> finish());
 
         // Récupérer le nom du groupe
-        groupName = getIntent().getStringExtra(ListsActivity.EXTRA_GROUP);
+        groupName = getIntent().getStringExtra(ListsActivity.EXTRA_GROUP_NAME);
 
         // Initialisation des vues
         listNameEditText = findViewById(R.id.etListName);
@@ -187,7 +188,7 @@ public class CreateListActivity extends AppCompatActivity {
 
         // Retour à ProductsActivity
         Intent i = new Intent(this, ListsActivity.class);
-        i.putExtra(ListsActivity.EXTRA_GROUP, groupName);
+        i.putExtra(ListsActivity.EXTRA_GROUP_NAME, groupName);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
         finish();

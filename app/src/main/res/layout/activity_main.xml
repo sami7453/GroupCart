@@ -25,8 +25,8 @@
     <!-- Catch phrase text view -->
     <TextView
         android:id="@+id/catchPhraseTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="355dp"
+        android:layout_height="55dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="189dp"
         android:gravity="center"

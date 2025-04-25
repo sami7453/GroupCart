@@ -24,6 +24,7 @@
     <!-- activity_create_list -->
     <string name="create_list">Create list</string>
     <string name="product_name">Product name</string>
+    <string name="enter_list_name">Enter list name...</string>
 
     <!-- activity_create_group -->
     <string name="enter_group_name">Enter group name...</string>
@@ -54,7 +55,6 @@
     <string name="scan">Scan</string>
     <string name="groups">Groups</string>
     <string name="home">Home</string>
-    <string name="enter_list_name">Enter list name...</string>
     <string name="delete">Delete product</string>
     <string name="status_to_buy">status to buy</string>
     <string name="edit">Edit</string>

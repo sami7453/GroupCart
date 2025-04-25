@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.groupcart.R;
-import com.example.groupcart.LoginActivity;
+import com.example.groupcart.user.LoginActivity;
 import com.example.groupcart.utils.Prefs;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

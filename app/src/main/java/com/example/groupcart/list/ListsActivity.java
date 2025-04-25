@@ -12,13 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.groupcart.R;
 import com.example.groupcart.group.GroupModel;
 import com.example.groupcart.utils.Prefs;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListsActivity extends AppCompatActivity {
-    public static final String EXTRA_GROUP = "groupName";
+    public static final String EXTRA_GROUP_NAME = "groupName";
     private String groupName;
     private RecyclerView listRecyclerView;
     private ListRecyclerViewAdapter adapter;
@@ -28,11 +29,11 @@ public class ListsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lists);
 
-        groupName = getIntent().getStringExtra(EXTRA_GROUP);
+        groupName = getIntent().getStringExtra(EXTRA_GROUP_NAME);
 
         // Top bar
         Toolbar topBar = findViewById(R.id.topBar);
-        topBar.setTitle("Lists of " + groupName);
+        topBar.setTitle("Lists in " + groupName);
         topBar.setNavigationOnClickListener(v -> finish());
 
         // List recycler view
@@ -43,7 +44,7 @@ public class ListsActivity extends AppCompatActivity {
         FloatingActionButton fab = findViewById(R.id.createListButton);
         fab.setOnClickListener(v -> {
             Intent intent = new Intent(this, CreateListActivity.class);
-            intent.putExtra(EXTRA_GROUP, groupName);
+            intent.putExtra(EXTRA_GROUP_NAME, groupName);
             startActivity(intent);
         });
 
@@ -60,6 +61,7 @@ public class ListsActivity extends AppCompatActivity {
         Prefs prefs = Prefs.with(this);
         List<GroupModel> groups = prefs.loadGroupsForUser(prefs.getCurrentUser());
         GroupModel myGroup = null;
+
         for (GroupModel group : groups) {
             if (group.getName().equals(groupName)) {
                 myGroup = group;
@@ -67,9 +69,7 @@ public class ListsActivity extends AppCompatActivity {
             }
         }
 
-        List<ListModel> lists = myGroup != null
-                ? myGroup.getLists()
-                : new ArrayList<>();
+        List<ListModel> lists = (myGroup != null) ? myGroup.getLists() : new ArrayList<>();
 
         adapter = new ListRecyclerViewAdapter(this, groupName, lists);
         listRecyclerView.setAdapter(adapter);

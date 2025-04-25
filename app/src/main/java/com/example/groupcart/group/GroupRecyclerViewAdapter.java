@@ -47,7 +47,7 @@ public class GroupRecyclerViewAdapter extends RecyclerView.Adapter<GroupRecycler
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ListsActivity.class);
-            intent.putExtra(ListsActivity.EXTRA_GROUP, group.getName());
+            intent.putExtra(ListsActivity.EXTRA_GROUP_NAME, group.getName());
             context.startActivity(intent);
         });
 
@@ -55,7 +55,7 @@ public class GroupRecyclerViewAdapter extends RecyclerView.Adapter<GroupRecycler
             new AlertDialog.Builder(context)
                     .setTitle("Delete group")
                     .setMessage("Are you sure you want to delete group '" + group.getName() + "'?")
-                    .setPositiveButton("Oui", (dialog, which) -> {
+                    .setPositiveButton("Yes", (dialog, which) -> {
                         String me = Prefs.with(context).getCurrentUser();
                         // 1) Supprimer de la vue
                         groups.remove(position);
