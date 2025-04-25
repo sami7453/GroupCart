@@ -25,12 +25,12 @@ import java.util.List;
 
 public class ListRecyclerViewAdapter extends RecyclerView.Adapter<ListRecyclerViewAdapter.ListViewHolder> {
     private Context context;
-    private String groupName;
+    private GroupModel group;
     private List<ListModel> lists;
 
-    public ListRecyclerViewAdapter(Context context, String groupName, List<ListModel> lists) {
+    public ListRecyclerViewAdapter(Context context, GroupModel group, List<ListModel> lists) {
         this.context = context;
-        this.groupName = groupName;
+        this.group = group;
         this.lists = lists;
     }
 
@@ -83,32 +83,33 @@ public class ListRecyclerViewAdapter extends RecyclerView.Adapter<ListRecyclerVi
                         lists.remove(position);
                         notifyItemRemoved(position);
 
-                        // 2) remove from current user's prefs
+                        // 2) remove from current group
+                        group.getLists().removeIf(l -> l.getName().equals(list.getName()));
+
+                        // 3) save updated group for current user
                         List<GroupModel> myGroups = prefs.loadGroupsForUser(me);
-                        GroupModel currentGroup = null;
                         for (GroupModel g : myGroups) {
-                            if (g.getName().equals(groupName)) {
-                                g.getLists().removeIf(l -> l.getName().equals(list.getName()));
-                                currentGroup = g;
+                            if (g.getName().equals(group.getName())) {
+                                g.getLists().clear();
+                                g.getLists().addAll(group.getLists());
                                 break;
                             }
                         }
                         prefs.saveGroupsForUser(me, myGroups);
 
-                        // 3) propagate removal to other members
-                        if (currentGroup != null) {
-                            for (UserModel member : currentGroup.getMembers()) {
-                                if (!member.getUsername().equals(me)) {
-                                    List<GroupModel> memberGroups = prefs.loadGroupsForUser(member.getUsername());
-                                    if (memberGroups != null) {
-                                        for (GroupModel mg : memberGroups) {
-                                            if (mg.getName().equals(groupName)) {
-                                                mg.getLists().removeIf(l -> l.getName().equals(list.getName()));
-                                                break;
-                                            }
+                        // 4) propagate removal to other members
+                        for (UserModel member : group.getMembers()) {
+                            if (!member.getUsername().equals(me)) {
+                                List<GroupModel> memberGroups = prefs.loadGroupsForUser(member.getUsername());
+                                if (memberGroups != null) {
+                                    for (GroupModel mg : memberGroups) {
+                                        if (mg.getName().equals(group.getName())) {
+                                            mg.getLists().clear();
+                                            mg.getLists().addAll(group.getLists());
+                                            break;
                                         }
-                                        prefs.saveGroupsForUser(member.getUsername(), memberGroups);
                                     }
+                                    prefs.saveGroupsForUser(member.getUsername(), memberGroups);
                                 }
                             }
                         }

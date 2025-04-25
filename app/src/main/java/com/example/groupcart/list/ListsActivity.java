@@ -73,7 +73,7 @@ public class ListsActivity extends AppCompatActivity {
 
         List<ListModel> lists = (myGroup != null) ? myGroup.getLists() : new ArrayList<>();
 
-        adapter = new ListRecyclerViewAdapter(this, groupName, lists);
+        adapter = new ListRecyclerViewAdapter(this, myGroup, lists);
         listRecyclerView.setAdapter(adapter);
     }
 }
