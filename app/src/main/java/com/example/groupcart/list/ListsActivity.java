@@ -57,7 +57,8 @@ public class ListsActivity extends AppCompatActivity {
     }
 
     private void loadAndDisplayLists() {
-        List<GroupModel> groups = Prefs.with(this).loadGroupsForUser(Prefs.with(this).getCurrentUser());
+        Prefs prefs = Prefs.with(this);
+        List<GroupModel> groups = prefs.loadGroupsForUser(prefs.getCurrentUser());
         GroupModel myGroup = null;
         for (GroupModel group : groups) {
             if (group.getName().equals(groupName)) {
@@ -65,16 +66,12 @@ public class ListsActivity extends AppCompatActivity {
                 break;
             }
         }
+
         List<ListModel> lists = myGroup != null
                 ? myGroup.getLists()
                 : new ArrayList<>();
 
-        if (adapter == null) {
-            adapter = new ListRecyclerViewAdapter(this, groupName, lists);
-            listRecyclerView.setAdapter(adapter);
-        } else {
-            adapter.updateData(lists);
-            adapter.notifyDataSetChanged();
-        }
+        adapter = new ListRecyclerViewAdapter(this, groupName, lists);
+        listRecyclerView.setAdapter(adapter);
     }
 }

@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.groupcart.R;
-import com.example.groupcart.product.ProductsActivity;
+import com.example.groupcart.list.ListsActivity;
 import com.example.groupcart.user.UserModel;
 import com.example.groupcart.utils.Prefs;
 
@@ -42,21 +42,19 @@ public class GroupRecyclerViewAdapter extends RecyclerView.Adapter<GroupRecycler
         GroupModel group = groups.get(position);
         holder.groupNameTextView.setText(group.getName());
         holder.groupMembersTextView.setText(
-                group.getMembers().isEmpty() ? "" : group.getMembers().get(0).getUsername()
+            group.getMembers().isEmpty() ? "" : group.getMembers().get(0).getUsername()
         );
 
-        // Clic sur l'item pour afficher les listes
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ProductsActivity.class);
-            intent.putExtra(ProductsActivity.EXTRA_GROUP, group.getName());
+            Intent intent = new Intent(context, ListsActivity.class);
+            intent.putExtra(ListsActivity.EXTRA_GROUP, group.getName());
             context.startActivity(intent);
         });
 
-        // Bouton supprimer ou quitter
         holder.deleteGroupButton.setOnClickListener(v -> {
             new AlertDialog.Builder(context)
-                    .setTitle("Supprimer le groupe")
-                    .setMessage("Êtes-vous sûr de vouloir quitter ou supprimer « " + group.getName() + " » ?")
+                    .setTitle("Delete group")
+                    .setMessage("Are you sure you want to delete group '" + group.getName() + "'?")
                     .setPositiveButton("Oui", (dialog, which) -> {
                         String me = Prefs.with(context).getCurrentUser();
                         // 1) Supprimer de la vue
@@ -66,35 +64,33 @@ public class GroupRecyclerViewAdapter extends RecyclerView.Adapter<GroupRecycler
                         // 2) Kick ou supprimer complètement
                         if (group.getMembers().size() > 1) {
                             // Kick current user
-                            List<GroupModel> myGroups = Prefs.with(context)
-                                    .loadGroupsForUser(me);
+                            List<GroupModel> myGroups = Prefs.with(context).loadGroupsForUser(me);
                             myGroups.removeIf(g -> g.getName().equals(group.getName()));
                             Prefs.with(context).saveGroupsForUser(me, myGroups);
                             // Mettre à jour les autres membres: enlever current user
                             for (UserModel member : group.getMembers()) {
                                 if (!member.getUsername().equals(me)) {
-                                    List<GroupModel> mg = Prefs.with(context)
-                                            .loadGroupsForUser(member.getUsername());
-                                    if (mg == null) mg = new ArrayList<>();
+                                    List<GroupModel> mg = Prefs.with(context).loadGroupsForUser(member.getUsername());
+                                    if (mg == null) {
+                                        mg = new ArrayList<>();
+                                    }
                                     for (GroupModel gm : mg) {
                                         if (gm.getName().equals(group.getName())) {
                                             gm.getMembers().removeIf(u -> u.getUsername().equals(me));
                                             break;
                                         }
                                     }
-                                    Prefs.with(context)
-                                            .saveGroupsForUser(member.getUsername(), mg);
+                                    Prefs.with(context).saveGroupsForUser(member.getUsername(), mg);
                                 }
                             }
                         } else {
                             // Supprimer pour current user (seul membre)
-                            List<GroupModel> myGroups = Prefs.with(context)
-                                    .loadGroupsForUser(me);
+                            List<GroupModel> myGroups = Prefs.with(context).loadGroupsForUser(me);
                             myGroups.removeIf(g -> g.getName().equals(group.getName()));
                             Prefs.with(context).saveGroupsForUser(me, myGroups);
                         }
                     })
-                    .setNegativeButton("Non", null)
+                    .setNegativeButton("No", null)
                     .show();
         });
     }

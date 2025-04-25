@@ -20,9 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.groupcart.R;
 import com.example.groupcart.group.GroupModel;
-import com.example.groupcart.list.ListModel;
 import com.example.groupcart.product.ProductModel;
-import com.example.groupcart.product.ProductsActivity;
 import com.example.groupcart.user.UserModel;
 import com.example.groupcart.utils.Prefs;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -62,7 +60,7 @@ public class CreateListActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(v -> finish());
 
         // Récupérer le nom du groupe
-        groupName = getIntent().getStringExtra(ProductsActivity.EXTRA_GROUP);
+        groupName = getIntent().getStringExtra(ListsActivity.EXTRA_GROUP);
 
         // Initialisation des vues
         listNameEditText = findViewById(R.id.etListName);
@@ -188,8 +186,8 @@ public class CreateListActivity extends AppCompatActivity {
         Toast.makeText(this, "Liste ajoutée !", Toast.LENGTH_SHORT).show();
 
         // Retour à ProductsActivity
-        Intent i = new Intent(this, ProductsActivity.class);
-        i.putExtra(ProductsActivity.EXTRA_GROUP, groupName);
+        Intent i = new Intent(this, ListsActivity.class);
+        i.putExtra(ListsActivity.EXTRA_GROUP, groupName);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
         finish();

@@ -19,9 +19,7 @@ import com.example.groupcart.utils.Prefs;
 
 import java.util.List;
 
-public class ListRecyclerViewAdapter
-        extends RecyclerView.Adapter<ListRecyclerViewAdapter.ListViewHolder> {
-
+public class ListRecyclerViewAdapter extends RecyclerView.Adapter<ListRecyclerViewAdapter.ListViewHolder> {
     private Context context;
     private String groupName;
     private List<ListModel> lists;
@@ -47,10 +45,9 @@ public class ListRecyclerViewAdapter
 
         holder.deleteListButton.setOnClickListener(v -> {
             new AlertDialog.Builder(context)
-                    .setTitle("Supprimer la liste")
-                    .setMessage("Êtes-vous sûr de vouloir supprimer « "
-                            + list.getName() + " » ?")
-                    .setPositiveButton("Oui", (dialog, which) -> {
+                    .setTitle("Delete list")
+                    .setMessage("Are you sure you want to delete list '" + list.getName() + "' ?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
                         Prefs prefs = Prefs.with(context);
                         String me = prefs.getCurrentUser();
 
@@ -59,16 +56,11 @@ public class ListRecyclerViewAdapter
                         notifyItemRemoved(position);
 
                         // 2) remove from current user's prefs
-                        List<GroupModel> myGroups =
-                                prefs.loadGroupsForUser(me);
+                        List<GroupModel> myGroups = prefs.loadGroupsForUser(me);
                         GroupModel currentGroup = null;
                         for (GroupModel g : myGroups) {
                             if (g.getName().equals(groupName)) {
-                                g.getLists().removeIf(
-                                        l -> l.getName().equals(
-                                                list.getName()
-                                        )
-                                );
+                                g.getLists().removeIf(l -> l.getName().equals(list.getName()));
                                 currentGroup = g;
                                 break;
                             }
@@ -77,47 +69,29 @@ public class ListRecyclerViewAdapter
 
                         // 3) propagate removal to other members
                         if (currentGroup != null) {
-                            for (UserModel member :
-                                    currentGroup.getMembers()) {
+                            for (UserModel member : currentGroup.getMembers()) {
                                 if (!member.getUsername().equals(me)) {
-                                    List<GroupModel> memberGroups =
-                                            prefs.loadGroupsForUser(
-                                                    member.getUsername()
-                                            );
+                                    List<GroupModel> memberGroups = prefs.loadGroupsForUser(member.getUsername());
                                     if (memberGroups != null) {
                                         for (GroupModel mg : memberGroups) {
-                                            if (mg.getName().equals(
-                                                    groupName
-                                            )) {
-                                                mg.getLists().removeIf(
-                                                        l -> l.getName().equals(
-                                                                list.getName()
-                                                        )
-                                                );
+                                            if (mg.getName().equals(groupName)) {
+                                                mg.getLists().removeIf(l -> l.getName().equals(list.getName()));
                                                 break;
                                             }
                                         }
-                                        prefs.saveGroupsForUser(
-                                                member.getUsername(),
-                                                memberGroups
-                                        );
+                                        prefs.saveGroupsForUser(member.getUsername(), memberGroups);
                                     }
                                 }
                             }
                         }
                     })
-                    .setNegativeButton("Non", null)
+                    .setNegativeButton("No", null)
                     .show();
         });
     }
 
     @Override public int getItemCount() {
         return lists.size();
-    }
-
-    public void updateData(List<ListModel> newLists) {
-        this.lists = newLists;
-        notifyDataSetChanged();
     }
 
     static class ListViewHolder extends RecyclerView.ViewHolder {

@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.groupcart.R;
 import com.example.groupcart.LoginActivity;
-import com.example.groupcart.group.GroupModel;
-import com.example.groupcart.group.GroupRecyclerViewAdapter;
 import com.example.groupcart.utils.Prefs;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -42,10 +40,12 @@ public class GroupsActivity extends AppCompatActivity {
         groupRecyclerView = findViewById(R.id.groupRecyclerView);
         groupRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        List<GroupModel> groups = Prefs.with(this).loadGroupsForUser(Prefs.with(this).getCurrentUser());
+        Prefs prefs = Prefs.with(this);
+        List<GroupModel> groups = prefs.loadGroupsForUser(prefs.getCurrentUser());
         if (groups == null) {
             groups = new ArrayList<>();
         }
+
         adapter = new GroupRecyclerViewAdapter(this, groups);
         groupRecyclerView.setAdapter(adapter);
 
